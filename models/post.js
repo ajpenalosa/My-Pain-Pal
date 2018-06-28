@@ -2,7 +2,7 @@ module.exports = function (sequelize, DataTypes) {
 
     var Post = sequelize.define("Post", {
 
-        painIntensity: {
+        pain_intensity: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
