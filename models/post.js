@@ -22,5 +22,14 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
     });
+
+    Post.associate = function(models){
+        Post.belongsTo(models.User, {
+            foreingKey: {
+                allowNull: false
+            }
+        });
+    };
+    
     return Post;
 };
