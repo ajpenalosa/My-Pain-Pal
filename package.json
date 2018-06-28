@@ -19,5 +19,13 @@
     "mysql2": "^1.5.3",
     "path": "^0.12.7",
     "sequelize": "^4.38.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajpenalosa/My-Pain-Pal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ajpenalosa/My-Pain-Pal/issues"
+  },
+  "homepage": "https://github.com/ajpenalosa/My-Pain-Pal#readme"
 }
