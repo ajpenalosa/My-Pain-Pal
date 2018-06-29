@@ -10,6 +10,19 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
 
+        pain_characteristics: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+        pain_duration: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+
         medications: {
             type: DataTypes.STRING,
             allowNull: false,
