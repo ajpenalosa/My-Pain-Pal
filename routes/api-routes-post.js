@@ -7,10 +7,16 @@ var db = require("../models");
 // =============================================================
 module.exports = function (app) {
     
-    app.get("/api/posts/", function(req, res){
-        db.Post.findAll({})
+    app.get("/api/posts/:id", function(req, res){
+        db.Post.findAll({
+            where: {
+                id: req.params.id
+            },
+            include: [db.User]
+        })
         .then(function(dbPost){
             res.json(dbPost);
         });
     });
+
 };
