@@ -22,13 +22,18 @@ module.exports = function (sequelize, DataTypes) {
 
         dob: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
 
         gender: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
+
+        token: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
 
     });
 
