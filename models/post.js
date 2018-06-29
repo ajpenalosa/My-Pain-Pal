@@ -2,6 +2,14 @@ module.exports = function (sequelize, DataTypes) {
 
     var Post = sequelize.define("Post", {
 
+        body_part: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+
         pain_intensity: {
             type: DataTypes.INTEGER,
             allowNull: false,
