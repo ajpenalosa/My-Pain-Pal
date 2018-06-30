@@ -6,7 +6,7 @@
 ----------------------------------- */
 
 /* -----------------------------------
-	Typography
+	Global
 --------------------------------------------------------------------------------------------- */
 
 html {
@@ -62,6 +62,15 @@ a:hover {
     color: #000;
 }
 
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: #2D93C5;
+    border-color: #2D93C5;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus, .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,0,0,0);
+}
+
 /* -----------------------------------
 	Navigation
 --------------------------------------------------------------------------------------------- */
@@ -84,11 +93,18 @@ a:hover {
     padding: 10px 20px;
     border: 3px solid #FFF;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:hover {
     background-color: #FFF;
     color: #000;
+}
+
+.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:active {
+    background-color: #2D93C5;
+    border-color: #2D93C5;
+    color: #FFF;
 }
 
 /* -----------------------------------
@@ -255,4 +271,47 @@ input#footer-email {
 .video-woman {
     background: url(../images/woman.jpg) no-repeat;
     background-size: cover;
+}
+
+/* -----------------------------------
+	Modals
+--------------------------------------------------------------------------------------------- */
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-header {
+    background-color: #2D93C5;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.modal h5 {
+    font-size: 2rem;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.close {
+    color: #FFF;
+    text-shadow: rgba(0,0,0,0);
+    opacity: 1;
+}
+
+.modal {
+    color: #4a4a4a;
+}
+
+.modal .btn-primary {
+    background-color: #2D93C5;
+    color: #FFF;
+}
+
+.modal .btn-secondary {
+    font-weight: 400;
+    font-size: 20px;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    border-radius: 0;
 }
