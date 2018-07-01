@@ -19,4 +19,6 @@ router.get("/posts", function (req, res) {
     res.render('post');
 });
 
+
+
 module.exports = router;
