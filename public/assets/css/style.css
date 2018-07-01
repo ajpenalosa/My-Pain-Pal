@@ -85,6 +85,10 @@ button:focus {
     color: #FFF;
 }
 
+.down-arrow.down-interior {
+    position: relative;
+}
+
 a.footer-toggle {
     position: relative;
     display: inline-block;
@@ -217,6 +221,10 @@ a.footer-toggle:hover .arrow-right {
     font-size: 20px;
 }
 
+.tab-text {
+    display: none;
+}
+
 .dashboard-tabs ul li a:hover {
     background-color: #2D93C5;
     text-decoration: none;
@@ -229,11 +237,6 @@ a.footer-toggle:hover .arrow-right {
 
 .dashboard-tabs a.active:hover {
     color: #FFF;
-}
-
-.tab-text {
-    font-size: 16px;
-    margin-left: 4px;
 }
 
 /* -----------------------------------
@@ -431,19 +434,26 @@ input#footer-email {
 }
 
 /* -----------------------------------
-	Quick Log
+	Dashboard
 --------------------------------------------------------------------------------------------- */
 
-.quick-log {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.dashboard-body {
+    position: relative;
     background-color: #e1e1e1;
 }
 
-.quick-log-content {
+.main-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-center {
     width: 100%;
 }
+
+/*----- Quick Log -----*/
 
 .body-part {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -553,6 +563,13 @@ input#footer-email {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+
+    /*-- Dashboard Tabs --*/
+    .dashboard-tabs ul li a {
+        font-size: 26px;
+    }
+
+    /*-- Quick Log --*/
     .smiley {
         font-size: 60px;
     }
@@ -560,6 +577,15 @@ input#footer-email {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+    .tab-text {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 16px;
+        margin-left: 4px;
+    }
+
+    /*-- Quick Log --*/
     .smiley {
         font-size: 70px;
     }
@@ -567,9 +593,8 @@ input#footer-email {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .dashboard-tabs ul li a {
-        font-size: 26px;
-    }
+
+    /*-- Quck Log --*/
     .smiley {
         font-size: 80px;
     }

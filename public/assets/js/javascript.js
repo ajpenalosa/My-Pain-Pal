@@ -52,33 +52,6 @@ $(document).ready(function() {
     var $item = $(".carousel-item");
     var $wHeight = $(window).height();
     $item.height($wHeight);
-    
-    // Dashboard
-    // =============================================================
-
-    // Saves height of dashboard nav in a variable
-    var dashboardHeight = $(".dashboard-nav").height();
-    // Saves height of tabs in a variable
-    var tabsHeight = $(".dashboard-tabs").height();
-
-    // Referencing the quick-log div
-    var quickLog = $(".quick-log");
-
-    // Making height of quick=log div equal to the height of the window, minus dashboard height and tabs height
-    quickLog.height($wHeight - dashboardHeight - tabsHeight);
-
-
-    var slider = document.getElementById("pain-level-range");
-    var output = document.getElementById("pain-value");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
-
-    // slider.change(function () {
-    //     $("#pain-value").text(slider.val());
-    // });
 
     
     // Resizes heights on window resize
@@ -86,7 +59,6 @@ $(document).ready(function() {
     $(window).on('resize', function (){
         $wHeight = $(window).height();
         $item.height($wHeight);
-        quickLog.height($wHeight - dashboardHeight - tabsHeight);
     });
     
   });

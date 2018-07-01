@@ -21,4 +21,29 @@ router.get("/dashboard", function (req, res) {
     res.render('dashboard');
 });
 
+// Add New
+router.get("/add-new", function (req, res) {
+    res.render('dashboard');
+});
+
+// Journal
+router.get("/journal", function (req, res) {
+    res.render('journal');
+});
+
+// Chart
+router.get("/chart", function (req, res) {
+    res.render('chart');
+});
+
+// Calendar
+router.get("/calendar", function (req, res) {
+    res.render('calendar');
+});
+
+// Body
+router.get("/body", function (req, res) {
+    res.render('body');
+});
+
 module.exports = router;
