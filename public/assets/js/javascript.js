@@ -48,6 +48,26 @@ $(document).ready(function() {
         pause: "false"
     });
 
+    // Restarts video when slide becomes active
+    $("#home-carousel").on("slide.bs.carousel", function() {
+        console.log($(this).find(".active").find("video").attr("id"));
+
+        var video = $(this).find(".active").find("video").attr("id");
+
+        if ( video === "video-man") {
+            var videoWoman = document.getElementById("video-woman");
+            videoWoman.pause();
+            videoWoman.currentTime = 0;
+            videoWoman.play();
+        }
+        else {
+            var videoMan = document.getElementById("video-man");
+            videoMan.pause();
+            videoMan.currentTime = 0;
+            videoMan.play();
+        }
+    })
+
     // Making height of carousel item the height of the browser window
     var $item = $(".carousel-item");
     var $wHeight = $(window).height();
