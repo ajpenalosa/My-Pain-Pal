@@ -12,62 +12,54 @@
 
   <br>
 
-<div id="female" class="">
-  <!-- female human body -->
-  <div id="save">
-    <br>
-    <a id="btn-save" href="#">Save</a>
-  </div>
-  <iframe id="embedded-human" class="femaleHuman" frameBorder="0" 
-    width="900" height="600" allowFullScreen="true" 
-    src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+  <div id="female" class="">
+    <!-- female human body -->
+    <div id="save">
+      <br>
+      <a id="btn-save" href="#">Save</a>
+    </div>
+    <iframe id="embedded-human" class="femaleHuman" frameBorder="0" width="900" height="600" allowFullScreen="true" src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
     </iframe>
     <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
     <script src="assets/js/female.js"></script>
-</div> 
-
-<div id="male">
-  <div id="saveMale">
-    <br>
-    <a id="btn-maleSave" href="#">Save</a>
   </div>
-  <!-- male human body -->
-  <iframe id="embeddedHuman" class="maleHuman" frameBorder="0" width="900" height="600" allowFullScreen="true" src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
-  </iframe>
-  <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
-  <script src="assets/js/male.js"></script>
-</div>
 
-<script>
+  <div id="male">
+    <div id="saveMale">
+      <br>
+      <a id="btn-maleSave" href="#">Save</a>
+    </div>
+    <!-- male human body -->
+    <iframe id="embeddedHuman" class="maleHuman" frameBorder="0" width="900" height="600" allowFullScreen="true" src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+    </iframe>
+    <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+    <script src="assets/js/male.js"></script>
+  </div>
 
-$(document).ready(function() {
-   $("#male").hide();
-   $("#female").hide();
-
-  var selected;
-
-  $("#female-btn").click(function(event) {
-       $("#female").show(); 
-    if(event.selected === true) {
-      $("#female").show(); 
-    } else {
-        $("#male").hide();
-    }      
-   });
-  $("#male-btn").click(function (event) {
-    $("#male").show();
-    if(event.selected === true) {
-      $("#male").show();
-    } else {
+  <script>
+    $(document).ready(function () {
+      $("#male").hide();
       $("#female").hide();
-    }
-    
-  });
+      var selected;
+      $("#female-btn").click(function (event) {
+        $("#female").show();
+        if (event.selected === true) {
+          $("#female").show();
+        } else {
+          $("#male").hide();
+        }
+      });
+      $("#male-btn").click(function (event) {
+        $("#male").show();
+        if (event.selected === true) {
+          $("#male").show();
+        } else {
+          $("#female").hide();
+        }
 
-});  
-
- 
-</script>
+      });
+    });
+  </script>
 
 
 </body>
