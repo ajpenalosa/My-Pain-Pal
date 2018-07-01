@@ -11,8 +11,14 @@ const router = require('express').Router();
 // Routes
 // =============================================================
 
+// Home Page
 router.get("/", function (req, res) {
     res.render('index');
+});
+
+// Dashboard
+router.get("/dashboard", function (req, res) {
+    res.render('dashboard');
 });
 
 module.exports = router;

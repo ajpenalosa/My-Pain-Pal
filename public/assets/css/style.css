@@ -71,9 +71,79 @@ a:hover {
     box-shadow: 0 0 0 0.2rem rgba(0,0,0,0);
 }
 
+button:focus {
+    outline: 0;
+}
+
+/*----- Down Arrow ----*/
+
+.down-arrow {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    z-index: 60;
+    color: #FFF;
+}
+
+a.footer-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 36px;
+}
+
+.arrow-left {
+    position: absolute;
+    width: 36px;
+    height: 5px;
+    top: 15px;
+    margin-left: -29px;
+    background-color: #FFF;
+    transform: rotate(45deg);
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+}
+
+.arrow-right {
+    position: absolute;
+    width: 36px;
+    height: 5px;
+    top: 15px;
+    margin-left: -7px;
+    background-color: #FFF;
+    transform: rotate(-45deg);
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+}
+
+a.footer-toggle:hover .arrow-left,
+a.footer-toggle:hover .arrow-right {
+    background-color: #2D93C5;
+}
+
 /* -----------------------------------
 	Navigation
 --------------------------------------------------------------------------------------------- */
+
+.navbar-toggler {
+    border: 3px solid #FFF;
+    border-radius: 0;
+}
+
+.navbar-toggler-icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    line-height: 30px;
+    font-weight: 900;
+    content: "\f0c9";
+    color: #FFF;
+}
 
 /*----- Home Nav -----*/
 
@@ -107,6 +177,65 @@ a:hover {
     color: #FFF;
 }
 
+/*----- Dashboard -----*/
+
+.dashboard-nav {
+    background: #000;
+}
+
+.dashboard-nav .navbar-brand img {
+    max-height: 50px;
+}
+
+.dashboard-nav .navbar {
+    padding: .5rem 0;
+}
+
+/*----- Dashboard Tabs -----*/
+
+.dashboard-tabs {
+    background: #4A4A4A;
+}
+
+.dashboard-tabs ul {
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-tabs ul li {
+    display: block;
+    float: left;
+    width: 20%;
+}
+
+.dashboard-tabs ul li a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.dashboard-tabs ul li a:hover {
+    background-color: #2D93C5;
+    text-decoration: none;
+}
+
+.dashboard-tabs a.active {
+    color: #2D93C5;
+    background-color: #e1e1e1;
+}
+
+.dashboard-tabs a.active:hover {
+    color: #FFF;
+}
+
+.tab-text {
+    font-size: 16px;
+    margin-left: 4px;
+}
+
 /* -----------------------------------
 	Footer
 --------------------------------------------------------------------------------------------- */
@@ -114,6 +243,7 @@ a:hover {
 footer {
     padding: 20px 0 5px;
 }
+
 footer,
 footer h4 {
     color: #7a7a7a;
@@ -197,22 +327,6 @@ input#footer-email {
 /* -----------------------------------
 	Home Carousel
 --------------------------------------------------------------------------------------------- */
-
-.down-arrow {
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-    z-index: 60;
-    color: #FFF;
-}
-
-.down-arrow a {
-    font-size: 30px;
-}
-
-.down-arrow a:hover {
-    color: #2D93C5;
-}
 
 .carousel-overlay {
     position: absolute;
@@ -314,4 +428,149 @@ input#footer-email {
     padding: 15px 30px;
     text-transform: uppercase;
     border-radius: 0;
+}
+
+/* -----------------------------------
+	Quick Log
+--------------------------------------------------------------------------------------------- */
+
+.quick-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e1e1e1;
+}
+
+.quick-log-content {
+    width: 100%;
+}
+
+.body-part {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: 100;
+    color: #2D93C5;
+    text-transform: uppercase;
+}
+
+.smiley-container {
+    background-color: #7a7a7a;
+    color: #000;
+}
+
+.smiley {
+    display: block;
+    float: left;
+    width: 20%;
+    font-size: 40px;
+    text-align: center;
+}
+
+/* Smiley Colors */
+
+.fa-laugh {
+    color: #01a209;
+}
+
+.fa-smile {
+    color: #94b900;
+}
+
+.fa-meh {
+    color: #d5c300;
+}
+
+.fa-frown {
+    color: #e28a00;
+}
+
+.fa-sad-cry {
+    color: #dc0000;
+}
+
+.quick-log .btn-primary {
+    background-color: #2D93C5;
+    border-color: #2D93C5;
+}
+
+.quick-log .btn-primary:hover {
+    background-color: #1c6588;
+    border-color: #1c6588;
+    color: #FFF;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 40px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    background: #FFF;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 40px;
+    height: 40px;
+    background: #FFF;
+    cursor: pointer;
+}
+
+.pain-level {
+    color: #000;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* -----------------------------------
+	Media Queries
+--------------------------------------------------------------------------------------------- */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .smiley {
+        font-size: 50px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .smiley {
+        font-size: 60px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .smiley {
+        font-size: 70px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .dashboard-tabs ul li a {
+        font-size: 26px;
+    }
+    .smiley {
+        font-size: 80px;
+    }
 }
