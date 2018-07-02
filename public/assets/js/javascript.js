@@ -2,6 +2,9 @@
 // =============================================================
 $(document).ready(function() {
 
+    var currentYear = (new Date).getFullYear();
+    $(".current-year").text(currentYear);
+
     // On click event to show/hide footer
     var footerToggle = $(".footer-toggle");
 

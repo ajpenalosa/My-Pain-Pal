@@ -230,13 +230,10 @@ a.footer-toggle:hover .arrow-right {
     text-decoration: none;
 }
 
-.dashboard-tabs a.active {
+.dashboard-tabs a.active,
+.dashboard-tabs a.active:hover {
     color: #2D93C5;
     background-color: #e1e1e1;
-}
-
-.dashboard-tabs a.active:hover {
-    color: #FFF;
 }
 
 /* -----------------------------------
