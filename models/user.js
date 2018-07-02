@@ -18,10 +18,14 @@ module.exports = function (sequelize, DataTypes) {
         },
         email: {
             type: DataTypes.STRING,
+<<<<<<< HEAD
             allowNull: false,
             validate: {
                 len: [1]
             }
+=======
+            allowNull: false
+>>>>>>> cryptoLogin
         },
 
         password: {
@@ -34,13 +38,18 @@ module.exports = function (sequelize, DataTypes) {
 
         dob: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
 
         gender: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
+
+        token: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
 
     });
 
