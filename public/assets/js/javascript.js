@@ -2,6 +2,7 @@
 // =============================================================
 $(document).ready(function() {
 
+    // Displaying current year in the footer
     var currentYear = (new Date).getFullYear();
     $(".current-year").text(currentYear);
 

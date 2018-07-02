@@ -162,7 +162,8 @@ a.footer-toggle:hover .arrow-right {
     max-height: 120px;
 }
 
-.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in {
+.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in,
+.dashboard-nav .navbar-expand-lg .navbar-nav a.nav-link.log-out {
     font-weight: 100;
     padding: 10px 20px;
     border: 3px solid #FFF;
@@ -170,12 +171,14 @@ a.footer-toggle:hover .arrow-right {
     cursor: pointer;
 }
 
-.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:hover {
+.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:hover,
+.dashboard-nav .navbar-expand-lg .navbar-nav a.nav-link.log-out:hover {
     background-color: #FFF;
     color: #000;
 }
 
-.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:active {
+.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:active,
+.dashboard-nav .navbar-expand-lg .navbar-nav a.nav-link.log-out:active {
     background-color: #2D93C5;
     border-color: #2D93C5;
     color: #FFF;
