@@ -11,12 +11,6 @@ const router = require('express').Router();
 // Routes
 // =============================================================
 
-router.get("/register", function (req, res) {
-    res.render('register');
-});
-
-router.get("/login", function (req, res) {
-    res.render('login');
 // Home Page
 router.get("/", function (req, res) {
     res.render('index');
@@ -25,6 +19,16 @@ router.get("/", function (req, res) {
 // Dashboard
 router.get("/dashboard", function (req, res) {
     res.render('dashboard');
+});
+
+// Register
+router.get("/register", function (req, res) {
+    res.render('register');
+});
+
+// Log In
+router.get("/login", function (req, res) {
+    res.render('login');
 });
 
 // Add New
