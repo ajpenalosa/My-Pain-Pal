@@ -29,7 +29,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/login', function (req, res) {
+    app.post('/', function (req, res) {
         console.log(req.session);
 
         var token = randtoken.generate(10);

@@ -28,7 +28,7 @@ $(document).ready(function() {
                 console.log(data.token);
 
                 if (data) {
-                    alert("Registration was successful, welcome to MyPainPal!");
+                    // alert("Registration was successful, welcome to MyPainPal!");
                     window.location.href = '/dashboard';
                 } else {
                     console.log("Error!");

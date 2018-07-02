@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    var register = ("#regForm");
+    var register = ("#loginForm");
 
-    var emAddr = $("#email");
-    var pWord = $("#password");
+    var emAddr = $("#loginEmail");
+    var pWord = $("#loginPassword");
 
     $(register).on("submit", function handleFormSubmit(event) {
         event.preventDefault();
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         $.post('/', existingUser, function(data) {
             if (data) {
-                alert("Successfully logged in!");
+                // alert("Successfully logged in!");
                 window.location.href = '/dashboard';
             } else {
                 alert("Log-in was unsuccessful!");
