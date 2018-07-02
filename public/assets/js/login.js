@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         console.log(existingUser);
 
-        $.post('/login', existingUser, function(data) {
+        $.post('/', existingUser, function(data) {
             if (data) {
                 alert("Successfully logged in!");
                 window.location.href = '/dashboard';

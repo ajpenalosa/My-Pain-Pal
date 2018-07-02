@@ -6,7 +6,7 @@ const session = require("express-session");
 
 module.exports = function(app) {
 
-    app.post('/register', function (req, res) {
+    app.post('/', function (req, res) {
         var token = randtoken.generate(10);
 
         db.User.create({

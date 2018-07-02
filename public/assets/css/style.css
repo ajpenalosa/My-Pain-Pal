@@ -155,7 +155,7 @@ a.footer-toggle:hover .arrow-right {
     position: absolute;
     width: 100%;
     /* background: rgba(0, 0, 0, 0.7); */
-    z-index: 999999;
+    z-index: 200;
 }
 
 .home-nav .navbar-brand img {
@@ -423,6 +423,8 @@ input#footer-email {
 .modal .btn-primary {
     background-color: #2D93C5;
     color: #FFF;
+    border: 0;
+    width: calc( 50% - 5px );
 }
 
 .modal .btn-secondary {
@@ -430,7 +432,22 @@ input#footer-email {
     font-size: 20px;
     padding: 15px 30px;
     text-transform: uppercase;
+    border: 0;
     border-radius: 0;
+    width: calc( 50% - 5px );
+}
+
+form .modal-footer>:not(:last-child) {
+    margin-right: 5px;
+}
+
+form .modal-footer>:not(:first-child) {
+    margin-left: 5px;
+}
+/* Places "Date of Birth" as a placeholder */
+input.date-of-birth:before {
+    content: "Date of Birth: ";
+    margin-right: 0.5em;
 }
 
 /* -----------------------------------
