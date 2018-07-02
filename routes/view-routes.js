@@ -15,7 +15,14 @@ router.get("/", function (req, res) {
     res.render('index');
 });
 
+
+//testing purposes for pain form
 router.get("/posts", function (req, res) {
+    res.render('post');
+});
+
+//testing purposes for pain form
+router.get("/journal", function (req, res) {
     res.render('post');
 });
 
