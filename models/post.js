@@ -2,9 +2,20 @@ module.exports = function (sequelize, DataTypes) {
 
     var Post = sequelize.define("Post", {
 
+        body_part: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+
         pain_intensity: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
 
         pain_characteristics: {
@@ -22,18 +33,12 @@ module.exports = function (sequelize, DataTypes) {
 
         medications: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         },
 
         dosage: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         },
 
         notes: {
@@ -42,7 +47,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        },
+        }
     });
 
     Post.associate = function (models) {
