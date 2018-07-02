@@ -18,14 +18,10 @@ module.exports = function (sequelize, DataTypes) {
         },
         email: {
             type: DataTypes.STRING,
-<<<<<<< HEAD
             allowNull: false,
             validate: {
                 len: [1]
             }
-=======
-            allowNull: false
->>>>>>> cryptoLogin
         },
 
         password: {
