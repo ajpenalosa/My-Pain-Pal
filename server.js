@@ -6,6 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var session = require("express-session");
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -18,6 +19,14 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Session
+app.use(session({
+    secret: "whateverwewant",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: "auto", maxAge: 99999 }
+}));
 
 // Static directory
 app.use(express.static("public"));
@@ -41,7 +50,7 @@ require("./routes/api-routes-user.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });

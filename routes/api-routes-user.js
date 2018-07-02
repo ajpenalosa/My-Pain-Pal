@@ -1,14 +1,14 @@
-var bodyParser = require("body-parser");
-var session = require("express-session");
-var db = require("../models");
-const encrypt = require("./crypt/encryption.js");
+const randtoken = require("rand-token");
+const db = require("../models");
+const session = require("express-session");
 
-module.exports = function (app) {
+// const encrypt = require("./crypt/encryption.js");
 
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
-    
-    app.get('/new-user', (req, res => {
+module.exports = function(app) {
+
+    app.post('/register', function (req, res) {
+        var token = randtoken.generate(10);
+
         db.User.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -16,77 +16,43 @@ module.exports = function (app) {
             password: req.body.password,
             dob: req.body.dob,
             gender: req.body.gender,
-            token: req.body.token
-            
-            // After a new user account is created, user will be prompted to log-in with their newly created credentials
-
-        }).then(dbUser => {
-            
-            app.use(session({
-                secret: "whateverwewant",
-                resave: false,
-                saveUninitialized: true,
-                cookie: { secure: "auto", maxAge: 99999 }
-            }));
-
-            app.get('/welcome', (req, res => {
-                if (req.session.user) {
-                    res.send(`Welcome back, ${req.session.user.first_name}.`);
-                } else if (req.cookie) {
-                    for (var i = 0; i < dbUser.length; i++) {
-                        if (dbUser[i].token === req.cookie.token) {
-                            req.session.user = dbUser[i];
-                            return res.redirect('/new-user');
-                        }
-                    }
-                } else {
-                    res.send(`
-                        <form method='POST' action='/login'>
-                            <input type='text' name='username' />
-                            <input type='password' name='password' />
-                            <input type='submit' value='Submit' />
-                        </form>
-                    `);
-                }
-            }));
-
-            app.get('/login', (req, res => {
-                db.User.findAll(
-                ).then(dbUser => {
-                    app.post('/login', (req, res => {
-                        for (var i = 0; i < dbUser.length; i++) {
-                            var dbPassword = dbUser[i].password;
-                            var deCryptPw = encrypt.decrypt(dbPassword);
-
-                            if (dbUser[i].email === req.body.email && deCryptPw === req.body.password) {
-                                var token = 't' + Math.random();
-                                dbUser[i].token = token;
-
-                                res.cookie('token', token);
-                                req.session.user = dbUser[i];
-
-                                return res.direct('/');
-                            } else {
-                                return res.send("Account not found!");
-                            };
-                        };
-                    }));
-                });
-            }));
+            token: token
+        }).then(function (dbUser) {
+            res.cookie("token", token);
+            res.json(dbUser);
+        }).catch(function (error) {
+            console.log(error);
+            res.send({
+                "code": 400,
+                "failed": "Error occurred!"
+            });
         });
-    }));
+    });
 
-    app.get('/other', (req, res => {
-        if (req.session.user) {
-            res.send('Welcome back, ${req.session.user.first_name}!');
-        } else {
-            res.redirect('/');
-        };
-    }));
+    app.post('/login', function (req, res) {
+        console.log(req.session);
 
-    app.get('/logout', (req, res => {
-        res.clearCookie('token');
-        req.session.destroy();
-        res.redirect('/');
-    }))
+        var token = randtoken.generate(10);
+
+        db.User.update({
+            token: token
+        }, {
+            where: {
+                email: req.body.email,
+                password: req.body.password
+            }
+        }).then(function(result) {
+            console.log(result);
+            if (!result) {
+                res.send("Log-in failure!");
+            } else {
+                // console.log("result", result.id);
+                // req.session.id = result.id
+                res.cookie("token", token);
+                res.send("Log-in success!");
+            };
+        }).catch(function(error) {
+            res.send(error);
+        });
+    });
 }
