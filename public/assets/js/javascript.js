@@ -54,7 +54,6 @@ $(document).ready(function() {
 
     // Restarts video when slide becomes active
     $("#home-carousel").on("slide.bs.carousel", function() {
-        console.log($(this).find(".active").find("video").attr("id"));
 
         var video = $(this).find(".active").find("video").attr("id");
 
