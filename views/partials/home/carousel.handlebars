@@ -9,8 +9,12 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
 
+    <!-- Down Arrow -->
     <div class="down-arrow text-center">
-      <a href="#footer"><i class="fas fa-chevron-down"></i></a>
+        <a href="#footer" class="footer-toggle" data-toggle="show">
+            <span class="arrow-left"></span>
+            <span class="arrow-right"></span>
+        </a>
     </div>
 
     <div class="carousel-overlay">
@@ -26,13 +30,13 @@
     </div> <!-- /carousel-overlay -->
 
     <div class="carousel-item active">
-        <video playsinline="" autoplay="" muted="" loop="" class="carousel-video video-man" >
+        <video playsinline="" autoplay="" muted="" loop="" class="carousel-video video-man" id="video-man" >
             <source src="./assets/videos/man.mp4" type="video/mp4">
         </video>
     </div>
 
     <div class="carousel-item">
-        <video playsinline="" autoplay="" muted="" loop="" class="carousel-video video-woman" >
+        <video playsinline="" autoplay="" muted="" loop="" class="carousel-video video-woman" id="video-woman" >
             <source src="./assets/videos/woman.mp4" type="video/mp4">
         </video>
     </div>

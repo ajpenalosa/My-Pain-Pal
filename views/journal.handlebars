@@ -1,15 +1,27 @@
-<<<<<<< HEAD
-{{> home-nav}}
-{{> carousel}}
-{{> modal-sign-up}}
-{{> modal-log-in}}
-{{> modal-more-info}}
-=======
-{{> home/nav}}
-{{> home/carousel}}
-{{> modals/sign-up}}
-{{> modals/log-in}}
-{{> modals/more-info}}
+{{> dashboard/nav}}
+{{> dashboard/tabs}}
+
+<div class="dashboard-body">
+
+    <div class="main-content">
+
+        <div class="flex-center journal">
+                
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>This is the Journal</h1>
+                    </div>
+                </div> <!-- /row -->
+            </div> <!-- /container -->
+            
+        </div> <!-- /quick-log -->
+
+    </div> <!-- /main-content -->
+
+    {{> dashboard/down-arrow}}
+    
+</div> <!-- /dashboard-body -->
 
 {{> footer}}
     
@@ -21,4 +33,4 @@
 
 <!-- JavaScript -->
 <script type="text/JavaScript" src="./assets/js/javascript.js"></script>
->>>>>>> dashboard
+<script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
