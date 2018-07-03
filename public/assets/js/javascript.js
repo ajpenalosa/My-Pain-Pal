@@ -72,16 +72,25 @@ $(document).ready(function() {
     })
 
     // Making height of carousel item the height of the browser window
-    var $item = $(".carousel-item");
-    var $wHeight = $(window).height();
-    $item.height($wHeight);
+    var carouselItem = $(".carousel-item");
+    var windowHeight = $(window).height();
+    carouselItem.height(windowHeight);
 
+    // Referencing divs
+    var homeNav = $(".home-nav");
+    var carouselContent = $(".carousel-content");
+    var downArrow = $(".down-arrow");
+
+    // Saving heights in variables
+    var homeNavHeight = homeNav.height();
+    var carouselContentHeight = carouselContent.height();
+    var downArrowHeight = downArrow.height();
     
     // Resizes heights on window resize
     // =============================================================
     $(window).on('resize', function (){
-        $wHeight = $(window).height();
-        $item.height($wHeight);
+        windowHeight = $(window).height();
+        carouselItem.height(windowHeight);
     });
     
   });
