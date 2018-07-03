@@ -1,58 +1,80 @@
 const randtoken = require("rand-token");
 const db = require("../models");
-const session = require("express-session");
-
-// const encrypt = require("./crypt/encryption.js");
+const encrypt = require("./crypt/encryption.js");
 
 module.exports = function(app) {
 
     app.post('/register', function (req, res) {
-        var token = randtoken.generate(10);
+        let token = randtoken.generate(10);
 
-        db.User.create({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            password: req.body.password,
-            dob: req.body.dob,
-            gender: req.body.gender,
-            token: token
-        }).then(function (dbUser) {
-            res.cookie("token", token);
-            res.json(dbUser);
-        }).catch(function (error) {
-            console.log(error);
-            res.send({
-                "code": 400,
-                "failed": "Error occurred!"
-            });
+        db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then(function(result) {
+            if (!result) {
+                let encryptPw = encrypt.encrypt(req.body.password);
+
+                db.User.create({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    password: encryptPw,
+                    dob: req.body.dob,
+                    gender: req.body.gender,
+                    token: token
+                }).then(function (dbUser) {
+                    res.cookie("token", token);
+                    req.session.user = dbUser.id;
+                    res.json(dbUser);
+                });
+            } else {
+                res.send({
+                    "code": 304,
+                    "failed": "Email address is in use! Please revise your input."
+                });
+            };
         });
     });
 
     app.post('/login', function (req, res) {
-        console.log(req.session);
-
-        var token = randtoken.generate(10);
-
-        db.User.update({
-            token: token
-        }, {
+        db.User.findOne({
             where: {
-                email: req.body.email,
-                password: req.body.password
+                email: req.body.email
             }
         }).then(function(result) {
-            console.log(result);
-            if (!result) {
-                res.send("Log-in failure!");
+            let token = randtoken.generate(10);
+            let dbPassword = result.password;
+            let decryptPw = encrypt.decrypt(dbPassword);
+
+            if (result.email === req.body.email && decryptPw === req.body.password) {
+                db.User.update({ token: token }, {
+                    where: {
+                        email: req.body.email
+                    }
+                }).then(function (data) {
+                    if (!data) {
+                        res.send("Log-in failure!");
+                    } else {
+                        res.cookie("token", token);
+                        req.session.user = result.id;
+                        res.send("Log-in success!");
+                    };
+                }).catch(function (error) {
+                    res.send(error);
+                });
             } else {
-                // console.log("result", result.id);
-                // req.session.id = result.id
-                res.cookie("token", token);
-                res.send("Log-in success!");
+                res.send({
+                    "code": 504,
+                    "failed": "Account not found! Please revise your credentials."
+                });
             };
-        }).catch(function(error) {
-            res.send(error);
         });
+    });
+    
+    app.get('/logout', function(req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
     });
 }
