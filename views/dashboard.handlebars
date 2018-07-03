@@ -62,8 +62,6 @@
                         <form>
                             <div id="posts-container">
                                 <div class="form-group">
-                                    <label for="body-part">Body Part:</label>
-                                    <input type="text" class="form-control" id="body-part">
                                     <div class="smiley-container clear">
                                         <div class="smiley">
                                             <i class="far fa-laugh"></i>
@@ -90,6 +88,8 @@
                                     <label for="pain-intensity">Pain Intensity:
                                         <span id="new-pain-value"></span>
                                     </label>
+                                    <label for="body-part">Body Part:</label>
+                                    <input type="text" class="form-control" id="body-part">
                                     <div class="form-group">
                                         <label for="pain-char">Select Pain Characteristics:</label>
                                         <select class="custom-select" id="pain-char">
@@ -101,14 +101,22 @@
                                             <option value="other">Other</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
                                     <label for="pain-duration">Pain Duration:</label>
                                     <input type="text" class="form-control" id="pain-duration">
+                                    </div>
+                                    <div class="form-group">
                                     <label for="medications">Medications:</label>
                                     <input type="text" class="form-control" id="medications">
+                                    </div>
+                                    <div class="form-group">
                                     <label for="dosage">Dosage:</label>
                                     <input type="text" class="form-control" id="dosage">
+                                    </div>
+                                    <div class="form-group">
                                     <label for="notes">Notes:</label>
                                     <textarea class="form-control" rows="10" id="notes"></textarea>
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-block btn-primary" id="post-submit">Submit</button>

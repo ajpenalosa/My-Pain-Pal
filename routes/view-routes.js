@@ -56,14 +56,5 @@ router.get("/body", function (req, res) {
     res.render('body');
 });
 
-//testing purposes for pain form
-// router.get("/posts", function (req, res) {
-//     res.render('post');
-// });
-
-//testing purposes for pain form
-// router.get("/journal", function (req, res) {
-//     res.render('post');
-// });
 
 module.exports = router;

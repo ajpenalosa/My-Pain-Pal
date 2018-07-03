@@ -1,5 +1,4 @@
-{{> dashboard/nav}} {{> dashboard/tabs}}
-
+ {{> dashboard/nav}} {{> dashboard/tabs}}
 <div class="dashboard-body">
 
     <div class="main-content">
@@ -7,63 +6,12 @@
         <div class="flex-center quick-log">
 
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="body-part text-center">
-                            {{!-- Right Arm --}}
-                        </div>
-                        <div class="yesterdays-pain"></div>
-                        <div class="smiley-container clear existing-smiley">
-                            <div class="smiley">
-                                <i class="far fa-laugh"></i>
-                            </div>
-                            <!-- /smiley -->
-                            <div class="smiley">
-                                <i class="far fa-smile"></i>
-                            </div>
-                            <!-- /smiley -->
-                            <div class="smiley">
-                                <i class="far fa-meh"></i>
-                            </div>
-                            <!-- /smiley -->
-                            <div class="smiley">
-                                <i class="far fa-frown"></i>
-                            </div>
-                            <!-- /smiley -->
-                            <div class="smiley">
-                                <i class="far fa-sad-cry"></i>
-                            </div>
-                            <!-- /smiley -->
-                        </div>
-                        <!-- /smiley-container -->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <form>
-                            <div id="existing-user-form">
-                                <div class="form-group">
-                                    <input type="range" min="0" max="10" value="5" class="form-control-range slider" id="pain-level-range">
-                                </div>
-                                <div class="pain-level text-center">
-                                    Pain Intensity:
-                                    <span id="pain-value"></span>
-                                </div>
-                                <button type="submit" class="btn btn-block btn-primary" id="quick-submit">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
                 <!-- /row -->
                 <div class="row">
                     <div class="col-sm-12">
                         <form>
-                            <div id="posts-container">
+                            <div id="add-new-container">
                                 <div class="form-group">
-                                    <label for="body-part">Body Part:</label>
-                                    <input type="text" class="form-control" id="body-part">
                                     <div class="smiley-container clear">
                                         <div class="smiley">
                                             <i class="far fa-laugh"></i>
@@ -86,10 +34,18 @@
                                         </div>
                                         <!-- /smiley -->
                                     </div>
-                                    <input type="range" min="0" max="10" value="5" class="form-control-range slider" id="new-pain-level-range">
-                                    <label for="pain-intensity">Pain Intensity:
-                                        <span id="new-pain-value"></span>
-                                    </label>
+                                    <div id="existing-user-form">
+                                        <div class="form-group">
+                                            <input type="range" min="0" max="10" value="5" class="form-control-range slider" id="post-pain-level-range">
+                                        </div>
+                                        <label for="pain-intensity">Pain Intensity:
+                                            <span id="post-pain-value"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="body-part">Body Part:</label>
+                                        <input type="text" class="form-control" id="body-part">
+                                    </div>
                                     <div class="form-group">
                                         <label for="pain-char">Select Pain Characteristics:</label>
                                         <select class="custom-select" id="pain-char">
@@ -101,39 +57,48 @@
                                             <option value="other">Other</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="pain-duration">Pain Duration:</label>
+                                </div>
+                                <div class="form-group">
                                     <input type="text" class="form-control" id="pain-duration">
+                                </div>
+                                <div class="form-group">
                                     <label for="medications">Medications:</label>
                                     <input type="text" class="form-control" id="medications">
+                                </div>
+                                <div class="form-group">
                                     <label for="dosage">Dosage:</label>
                                     <input type="text" class="form-control" id="dosage">
+                                </div>
+                                <div class="form-group">
                                     <label for="notes">Notes:</label>
                                     <textarea class="form-control" rows="10" id="notes"></textarea>
                                 </div>
-
-                                <button type="submit" class="btn btn-block btn-primary" id="post-submit">Submit</button>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
 
+                            <button type="submit" class="btn btn-block btn-primary" id="journal-post-submit">Submit</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /row -->
         </div>
-        <!-- /quick-log -->
+        <!-- /container -->
 
     </div>
-    <!-- /main-content -->
+    <!-- /quick-log -->
 
-    {{> dashboard/down-arrow}}
+</div>
+<!-- /main-content -->
+
+{{> dashboard/down-arrow}}
 
 </div>
 <!-- /dashboard-body -->
 
 {{> footer}}
-
-<!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
@@ -145,5 +110,5 @@
 <!-- JavaScript -->
 <script type="text/JavaScript" src="./assets/js/javascript.js"></script>
 <script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
-<script type="text/JavaScript" src="./assets/js/quick-log.js"></script>
+<script type="text/JavaScript" src="./assets/js/add-new.js"></script>
 <script type="text/JavaScript" src="./assets/js/post.js"></script>

@@ -5,6 +5,7 @@ $(document).ready(function () {
     var body_part = $("#body-part")
     var pain_intensity = $("#new-pain-level-range");
     var existing_pain_intensity = $("#pain-level-range");
+    var journal_pain_intensity = $("#post-pain-level-range");
     var pain_characteristics = $("#pain-char");
     var pain_duration = $("#pain-duration");
     var medications = $("#medications");
@@ -94,6 +95,22 @@ $(document).ready(function () {
         var newPost = {
             body_part: body_part.val().trim(),
             pain_intensity: pain_intensity.val().trim(),
+            pain_characteristics: pain_characteristics.val().trim(),
+            pain_duration: pain_duration.val().trim(),
+            medications: medications.val().trim(),
+            dosage: dosage.val().trim(),
+            notes: notes.val().trim(),
+        }
+        console.log(newPost);
+        submitPost(newPost);
+    });
+
+    $("#journal-post-submit").on("click", function handleFormSubmit(event) {
+        console.log("clicked");
+        event.preventDefault();
+        var newPost = {
+            body_part: body_part.val().trim(),
+            pain_intensity: journal_pain_intensity.val().trim(),
             pain_characteristics: pain_characteristics.val().trim(),
             pain_duration: pain_duration.val().trim(),
             medications: medications.val().trim(),
