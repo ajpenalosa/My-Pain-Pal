@@ -17,6 +17,18 @@ $(document).ready(function () {
     var bodyPartDiv = $(".body-part");
     var quickPostDiv = $("#existing-user-form");
     var smileyContainer = $(".existing-smiley");
+    var femaleDiv = $("#female");
+    var maleDiv = $("#male");
+    var bodyPartDropdown = $("#bodyPartLabel");
+    var humanFemale = new HumanAPI("embedded-human");
+    var humanMale = new HumanAPI("embeddedHuman");
+    var bodyPart;
+    var objectID = [];
+    var objectId = [];
+    var userFemaleArr = [];
+    var userMaleArr = [];
+    femaleDiv.hide();
+    maleDiv.hide();
     postsContainer.hide();
 
 
@@ -25,7 +37,7 @@ $(document).ready(function () {
         postsContainer.show();
     }
 
-    var userId = 1;
+    var userId = 2;
 
 
     function getPosts() {
@@ -41,20 +53,43 @@ $(document).ready(function () {
             console.log("what is this: ", posts[0].Posts)
             var usersPosts = posts[0].Posts;
             console.log("this one is the users posts console: ", usersPosts);
+
+            if (posts[0].gender === "Female") {
+                femaleDiv.show();
+
+            } else {
+
+
+                maleDiv.show();
+            }
+
+
+
             if (usersPosts.length === 0) {
+                // femaleDiv.hide();
+                // maleDiv.hide();
                 console.log("conditional works");
                 displayEmptyForm();
                 quickPostDiv.hide();
                 smileyContainer.hide();
             } else {
+                femaleDiv.hide();
+                maleDiv.hide();
                 postsContainer.hide();
                 console.log("else");
                 var userPostsDiv = $("<div>");
-                userPostsDiv.text("Hello, your pain intensity yesterday was " + usersPosts[usersPosts.length - 1].pain_intensity);
+                userPostsDiv.text("Hello, your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity);
                 $(".yesterdays-pain").append(userPostsDiv);
-                bodyPartDiv.append(usersPosts[usersPosts.length - 1].body_part);
+                // bodyPartDiv.append(usersPosts[usersPosts.length - 1].body_part);
                 quickPostDiv.show();
                 smileyContainer.show();
+            }
+
+            for (var i = 0; i < usersPosts.length; i++) {
+                var multipleBody = usersPosts[i].body_part;
+                var newOption = $("<option>")
+                newOption.text(multipleBody).val(multipleBody)
+                bodyPartDropdown.append(newOption);
             }
         });
     }
@@ -131,6 +166,97 @@ $(document).ready(function () {
         submitPost(newPost);
     });
 
+    function maleSelect() {
+
+        humanMale.on("scene.picked", function (pickEvent) {
+            if (pickEvent.mode === "singleClick") {
+                bodyPart = pickEvent.objectId;
+                console.log("BODY PART " + bodyPart)
+            }
+            userMaleArr.push(bodyPart);
+            console.log("body part array: ", userMaleArr);
+        });
+
+        $("#btn-Save").on("click", function (event) {
+
+            console.log("SAVED: " + bodyPart);
+            var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
+
+            console.log("Saved F obj on click: ", newBodyPart[1]);
+            console.log("the one should  be  F split up again :", newBodyPart)
+
+            $("#body-part").val(newBodyPart[1]);
+
+        });
+
+
+        var mode = document.getElementById('male');
+
+        mode.onClick = function () {
+            human.send("scene.pickingMode", "highlight");
+        };
+
+        var save = document.getElementById('Save');
+
+        save.onclick = function (pickEvent) {
+
+            $("#male").hide();
+            // objectId.push(bodyPart);
+            // console.log("Saved obj on click: ", objectId);
+
+        };
+
+
+
+    };
+
+    maleSelect();
+
+
+    function femaleSelect() {
+
+
+        humanFemale.on("scene.picked",
+            function (pickEvent) {
+                if (pickEvent.mode === "singleClick") {
+                    bodyPart = pickEvent.objectId;
+                    console.log("BODY PART " + bodyPart);
+                }
+                userFemaleArr.push(bodyPart);
+                console.log("body part array: ", userFemaleArr);
+
+            });
+
+        $("#btn-save").on("click", function (event) {
+
+            console.log("SAVED: " + bodyPart);
+            var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
+
+            console.log("Saved F obj on click: ", newBodyPart[1]);
+            console.log("the one should  be  F split up again :", newBodyPart)
+            $("#body-part").val(newBodyPart[1]);
+
+        });
+
+        var mode = document.getElementById('female');
+
+        mode.onClick = function () {
+
+            human.send("scene.pickingMode", "highlight");
+        };
+        var save = document.getElementById('save');
+        //save the current scene, use data in future if needed
+        save.onclick = function (pickEvent) {
+            $("#female").hide();
+
+            // objectID.push(bodyPart);
+
+            // console.log("Saved obj on click: ", objectID);
+
+        };
+    }
+
+    femaleSelect();
 
     function submitPost(Post) {
         $.post("/api/dashboard/", Post, function () {

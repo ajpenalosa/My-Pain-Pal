@@ -10,9 +10,41 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="body-part text-center">
-                            {{!-- Right Arm --}}
+                            <form>
+                            <div class="form-group">
+                                <label for="bodyPartLabel"></label>
+                                <select class="form-control" id="bodyPartLabel">
+                                    {{!-- Right Arm --}}
+
+                                </select>
+                            </div>
+                            </form>
                         </div>
                         <div class="yesterdays-pain"></div>
+                        <div class="female">
+                            <div id="female">
+                                <!-- female human body -->
+                                <iframe id="embedded-human" class="femaleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="false"
+                                    src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=false&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+                                </iframe>
+                                <div id="save">
+                                    <button id="btn-save" href="#">Save</button>
+                                </div>
+                                <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+                            </div>
+                        </div>
+                        <div class="male">
+                            <div id="male">
+                                <!-- male human body -->
+                                <iframe id="embeddedHuman" class="maleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="true"
+                                    src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+                                </iframe>
+                                <div id="Save">
+                                    <button id="btn-Save" href="#">Save</button>
+                                </div>
+                                <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+                            </div>
+                        </div>
                         <div class="smiley-container clear existing-smiley">
                             <div class="smiley">
                                 <i class="far fa-laugh"></i>
@@ -102,20 +134,20 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                    <label for="pain-duration">Pain Duration:</label>
-                                    <input type="text" class="form-control" id="pain-duration">
+                                        <label for="pain-duration">Pain Duration:</label>
+                                        <input type="text" class="form-control" id="pain-duration">
                                     </div>
                                     <div class="form-group">
-                                    <label for="medications">Medications:</label>
-                                    <input type="text" class="form-control" id="medications">
+                                        <label for="medications">Medications:</label>
+                                        <input type="text" class="form-control" id="medications">
                                     </div>
                                     <div class="form-group">
-                                    <label for="dosage">Dosage:</label>
-                                    <input type="text" class="form-control" id="dosage">
+                                        <label for="dosage">Dosage:</label>
+                                        <input type="text" class="form-control" id="dosage">
                                     </div>
                                     <div class="form-group">
-                                    <label for="notes">Notes:</label>
-                                    <textarea class="form-control" rows="10" id="notes"></textarea>
+                                        <label for="notes">Notes:</label>
+                                        <textarea class="form-control" rows="10" id="notes"></textarea>
                                     </div>
                                 </div>
 
@@ -155,3 +187,6 @@
 <script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
 <script type="text/JavaScript" src="./assets/js/quick-log.js"></script>
 <script type="text/JavaScript" src="./assets/js/post.js"></script>
+<script type="text/JavaScript" src="./assets/js/female.js"></script>
+<script type="text/JavaScript" src="./assets/js/male.js"></script>
+<script type="text/JavaScript" src="./assets/js/register.js"></script>
