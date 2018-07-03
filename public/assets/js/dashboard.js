@@ -8,11 +8,10 @@ var body = $("body");
 switch (window.location.pathname) {
     case "/dashboard":
         body.addClass("dashboard");
-        $(".link-add-new").addClass("active").removeAttr("href");
     break;
 
     case "/add-new":
-        body.addClass("dashboard");
+        body.addClass("add-new");
         $(".link-add-new").addClass("active").removeAttr("href");
     break;
 
