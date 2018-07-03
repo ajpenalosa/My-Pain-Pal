@@ -37,7 +37,7 @@ $(document).ready(function () {
         postsContainer.show();
     }
 
-    var userId = 2;
+    var userId = 1;
 
 
     function getPosts() {
@@ -56,15 +56,9 @@ $(document).ready(function () {
 
             if (posts[0].gender === "Female") {
                 femaleDiv.show();
-
             } else {
-
-
                 maleDiv.show();
             }
-
-
-
             if (usersPosts.length === 0) {
                 // femaleDiv.hide();
                 // maleDiv.hide();
@@ -78,9 +72,9 @@ $(document).ready(function () {
                 postsContainer.hide();
                 console.log("else");
                 var userPostsDiv = $("<div>");
-                userPostsDiv.text("Hello, your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity);
-                $(".yesterdays-pain").append(userPostsDiv);
-                // bodyPartDiv.append(usersPosts[usersPosts.length - 1].body_part);
+                $(".yesterdays-pain").text("Hello, your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity);
+                // $(".yesterdays-pain").append(userPostsDiv);
+                bodyPartDiv.text(usersPosts[usersPosts.length - 1].body_part);
                 quickPostDiv.show();
                 smileyContainer.show();
             }
@@ -261,6 +255,7 @@ $(document).ready(function () {
     function submitPost(Post) {
         $.post("/api/dashboard/", Post, function () {
             window.location.href = "/dashboard";
+            
         });
     }
 });
