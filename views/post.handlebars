@@ -1,68 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
+ {{> dashboard/nav}} {{> dashboard/tabs}}
+<div class="dashboard-body">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Post Page</title>
+    <div class="main-content">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-</head>
+        <div class="flex-center quick-log">
 
-<body>
+            <div class="container">
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form>
+                            <div id="add-new-container">
+                                <div class="form-group">
+                                    <div class="smiley-container clear">
+                                        <div class="smiley">
+                                            <i class="far fa-laugh"></i>
+                                        </div>
+                                        <!-- /smiley -->
+                                        <div class="smiley">
+                                            <i class="far fa-smile"></i>
+                                        </div>
+                                        <!-- /smiley -->
+                                        <div class="smiley">
+                                            <i class="far fa-meh"></i>
+                                        </div>
+                                        <!-- /smiley -->
+                                        <div class="smiley">
+                                            <i class="far fa-frown"></i>
+                                        </div>
+                                        <!-- /smiley -->
+                                        <div class="smiley">
+                                            <i class="far fa-sad-cry"></i>
+                                        </div>
+                                        <!-- /smiley -->
+                                    </div>
+                                    <div id="existing-user-form">
+                                        <div class="form-group">
+                                            <input type="range" min="0" max="10" value="5" class="form-control-range slider" id="post-pain-level-range">
+                                        </div>
+                                        <label for="pain-intensity">Pain Intensity:
+                                            <span id="post-pain-value"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="body-part">Body Part:</label>
+                                        <input type="text" class="form-control" id="body-part">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pain-char">Select Pain Characteristics:</label>
+                                        <select class="custom-select" id="pain-char">
+                                            <option value="sharp">Sharp</option>
+                                            <option value="dull">Dull</option>
+                                            <option value="stabbing">Stabbing</option>
+                                            <option value="throbbing">Throbbing</option>
+                                            <option value="aching">Aching</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pain-duration">Pain Duration:</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="pain-duration">
+                                </div>
+                                <div class="form-group">
+                                    <label for="medications">Medications:</label>
+                                    <input type="text" class="form-control" id="medications">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dosage">Dosage:</label>
+                                    <input type="text" class="form-control" id="dosage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="notes">Notes:</label>
+                                    <textarea class="form-control" rows="10" id="notes"></textarea>
+                                </div>
+                            </div>
 
-    <div class="container">
-        <div id="displayPosts"></div>
-        <div class="row">
-            <div class="col-md-5 offset-md-3">
-                <form id="pain-form posts-container">
-                    <div class="form-group">
-                        <label for="body-part">Body Part:</label>
-                        <input type="text" class="form-control" id="body-part">
-                        <br/>
-                        <label for="pain-intensity">Pain Intensity:</label>
-                        <input type="text" class="form-control" id="pain-intensity">
-                        <br/>
-                        <div class="form-group">
-                            <label for="pain-char">Select Pain Characteristics:</label>
-                            <select class="custom-select" id="pain-char">
-                                <option value="sharp">Sharp</option>
-                                <option value="dull">Dull</option>
-                                <option value="stabbing">Stabbing</option>
-                                <option value="throbbing">Throbbing</option>
-                                <option value="aching">Aching</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <br/>
-                        <label for="pain-duration">Pain Duration:</label>
-                        <input type="text" class="form-control" id="pain-duration">
-                        <br/>
-                        <label for="medications">Medications:</label>
-                        <input type="text" class="form-control" id="medications">
-                        <br/>
-                        <label for="dosage">Dosage:</label>
-                        <input type="text" class="form-control" id="dosage">
-                        <br/>
-                        <label for="notes">Notes:</label>
-                        <textarea class="form-control" rows="10" id="notes"></textarea>
-                        <br/>
-                        <button type="submit" class="btn btn-success submit btn-lg" id = "post-submit">Submit</button>
+                            <button type="submit" class="btn btn-block btn-primary" id="journal-post-submit">Submit</button>
                     </div>
-                </form>
+                    </form>
+                </div>
             </div>
+            <!-- /row -->
         </div>
+        <!-- /container -->
+
     </div>
+    <!-- /quick-log -->
 
-    <!-- JavaScript -->
-    <script type="text/JavaScript" src="./assets/js/post.js"></script>
+</div>
+<!-- /main-content -->
 
-</body>
+{{> dashboard/down-arrow}}
 
-</html>
+</div>
+<!-- /dashboard-body -->
+
+{{> footer}}
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+<!-- JavaScript -->
+<script type="text/JavaScript" src="./assets/js/javascript.js"></script>
+<script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
+<script type="text/JavaScript" src="./assets/js/add-new.js"></script>
+<script type="text/JavaScript" src="./assets/js/post.js"></script>
