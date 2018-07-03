@@ -1,37 +1,50 @@
-var human = new HumanAPI ("embeddedHuman");
+$(document).ready(function() {
 
-console.log("Listening for human.ready event");
+    var human = new HumanAPI("embeddedHuman");
 
-human.on("human.ready", function() {
-    console.log("Human loaded!");
-});
+    console.log("Listening for human.ready event");
 
-var bodyPart;
-
-human.on("scene.picked", function(pickEvent) {
-    if(pickEvent.mode === "singleClick") {
-        bodyPart = pickEvent.objectId;
-        console.log("BODY PART " + bodyPart)
-    }
-});
-
-$("#btn-maleSave").on("click", function(event) {
-    console.log("SAVED: " + bodyPart)
-});
-
-var objectID = [];
-
-var mode = document.getElementById('mode');
-
-mode.onClick = function () {
-    human.send("scene.pickingMode", "highlight");
-};
-
-var save = document.getElementById('saveMale');
-
-save.onclick = function() {
-    human.send("scene.capture", function(scene) {
-        savedScene = scene;
-
+    human.on("human.ready", function () {
+        console.log("Human loaded!");
     });
-};
+
+    var bodyPart;
+    var userMaleArr = [];
+
+    human.on("scene.picked", function (pickEvent) {
+        if (pickEvent.mode === "singleClick") {
+            bodyPart = pickEvent.objectId;
+            console.log("BODY PART " + bodyPart)
+        }
+        userMaleArr.push(bodyPart);
+        console.log("body part array: ", userMaleArr);
+    });
+
+    $("#btn-Save").on("click", function (event) {
+        console.log("SAVED: " + bodyPart);
+        $("#body-part").append(bodyPart);
+    });
+
+    var objectId = [];
+
+    var mode = document.getElementById('male');
+
+    mode.onClick = function () {
+        human.send("scene.pickingMode", "highlight");
+    };
+
+    var save = document.getElementById('Save');
+
+    save.onclick = function (pickEvent) {
+
+        $("#male").hide();
+
+        objectId.push(bodyPart);
+
+        console.log("Saved obj on click: ", objectId);
+
+    };
+
+
+
+});
