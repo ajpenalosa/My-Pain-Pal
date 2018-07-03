@@ -16,11 +16,6 @@ router.get("/", function (req, res) {
     res.render('index');
 });
 
-// Dashboard
-router.get("/dashboard", function (req, res) {
-    res.render('dashboard');
-});
-
 // Register
 router.get("/register", function (req, res) {
     res.render('register');
@@ -31,9 +26,14 @@ router.get("/login", function (req, res) {
     res.render('login');
 });
 
+// Dashboard
+router.get("/dashboard", function (req, res) {
+    res.render('dashboard');
+});
+
 // Add New
 router.get("/add-new", function (req, res) {
-    res.render('dashboard');
+    res.render('post');
 });
 
 // Journal
@@ -55,5 +55,6 @@ router.get("/calendar", function (req, res) {
 router.get("/body", function (req, res) {
     res.render('body');
 });
+
 
 module.exports = router;

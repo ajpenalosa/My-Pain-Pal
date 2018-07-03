@@ -1,7 +1,10 @@
 $(document).ready(function() {
 
     var register = $("#regForm");
+<<<<<<< HEAD
     
+=======
+>>>>>>> 71f5fcb283bc4d81786a6cfda4c3d9cdbcfc3f71
     var fName = $("#first-name");
     var lName = $("#last-name");
     var emAddr = $("#email");

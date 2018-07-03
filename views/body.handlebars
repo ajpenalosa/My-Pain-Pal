@@ -10,7 +10,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1>This is the Body</h1>
+                        <button id="female-btn">female</button>
+                        <button id="male-btn">male</button>
+                        
+                        <br>
+                        
+                        <div id="female">
+                            <!-- female human body -->
+                            <iframe id="embedded-human" class="femaleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="false"
+                                src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=false&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+                            </iframe>
+                            <div id="save">
+                                <button id="btn-save" href="#">Save</button>
+                            </div>
+                            <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+                        </div>
+                        
+                        <div id="male">
+                            <!-- male human body -->
+                            <iframe id="embeddedHuman" class="maleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="true"
+                                src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+                            </iframe>
+                            <div id="Save">
+                                <button id="btn-Save" href="#">Save</button>
+                            </div>
+                            <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+                        </div>
+
+                  
                     </div>
                 </div> <!-- /row -->
             </div> <!-- /container -->
@@ -24,6 +51,31 @@
 </div> <!-- /dashboard-body -->
 
 {{> footer}}
+
+<script>
+    $(document).ready(function () {
+        $("#male").hide();
+        $("#female").hide();
+        var selected;
+        $("#female-btn").click(function (event) {
+            $("#female").show();
+            if (event.selected === true) {
+                $("#female").show();
+            } else {
+                $("#male").hide();
+            }
+        });
+        $("#male-btn").click(function (event) {
+            $("#male").show();
+            if (event.selected === true) {
+                $("#male").show();
+            } else {
+                $("#female").hide();
+            }
+
+        });
+    });
+</script>
     
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -31,7 +83,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
+
 <!-- JavaScript -->
 <script type="text/JavaScript" src="./assets/js/javascript.js"></script>
 <script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
 <script type="text/JavaScript" src="./assets/js/logout.js"></script>
+<script type="text/Javascript" src="./assets/js/female.js"></script>
+<script type="text/Javascript" src="./assets/js/male.js"></script>

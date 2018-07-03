@@ -1,5 +1,6 @@
+$(document).ready(function() {
 
-var human = new HumanAPI("embedded-human"); 
+    var human = new HumanAPI("embedded-human"); 
 
 console.log("Listening for human.ready event");
 
@@ -8,36 +9,44 @@ human.on("human.ready", function () {
 });
 
 var bodyPart;
-// console.log("Pick or hover over something!");
+var userFemaleArr = [];
+
 human.on("scene.picked",
     function (pickEvent) {
         if(pickEvent.mode === "singleClick") {
             bodyPart = pickEvent.objectId;
-            console.log("BODY PART " + bodyPart)
+            console.log("BODY PART " + bodyPart);
         } 
-        // console.log("'scene.picked' event: " + JSON.stringify(pickEvent));
+        userFemaleArr.push(bodyPart);
+        console.log("body part array: ", userFemaleArr);
+       
     });
 
 $("#btn-save").on("click", function(event) {
     console.log("SAVE: " + bodyPart);
-})    
+    $("#body-part").append(bodyPart);
+});
+
 
 var objectID = [];
-var mode = document.getElementById('mode');
-// var modeText = document.getElementById('modeText')
-//switch modes (highlight vs. annotate)
+var mode = document.getElementById('female');
+
 mode.onClick = function () {
 
         human.send("scene.pickingMode", "highlight");
     };
 var save = document.getElementById('save');
 //save the current scene, use data in future if needed
-save.onclick = function () {
-    human.send("scene.capture", function (scene) {
-        savedScene = scene;
-        //...do something with savedScene (e.g. us it to restore to scene later)...
-    });
+save.onclick = function (pickEvent) {    
+    $("#female").hide();
+
+    objectID.push(bodyPart);
+
+    console.log("Saved obj on click: " , objectID);
+
 };
 
-var select = true;
+
+});
+
 
