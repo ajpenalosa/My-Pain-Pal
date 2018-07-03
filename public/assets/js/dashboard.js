@@ -55,15 +55,15 @@ var dashboardBody = $(".dashboard-body");
 var mainContent = $(".main-content");
 
 // Height of main content div is equal to window height minus dashboard height, tabs height and down arrow height
-mainContent.height($wHeight - dashboardHeight - tabsHeight - downArrowHeight);
+// mainContent.height($wHeight - dashboardHeight - tabsHeight - downArrowHeight);
 
 // Height of dashboard body div is equal to window height, minus dashboard height and tabs height
-dashboardBody.height($wHeight - dashboardHeight - tabsHeight);
+// dashboardBody.height($wHeight - dashboardHeight - tabsHeight);
 
 // Resizes heights on window resize
 // =============================================================
-$(window).on('resize', function (){
-    $wHeight = $(window).height();
-    mainContent.height($wHeight - dashboardHeight - tabsHeight - downArrowHeight);
-    dashboardBody.height($wHeight - dashboardHeight - tabsHeight);
-});
+// $(window).on('resize', function (){
+//     $wHeight = $(window).height();
+//     mainContent.height($wHeight - dashboardHeight - tabsHeight - downArrowHeight);
+//     dashboardBody.height($wHeight - dashboardHeight - tabsHeight);
+// });

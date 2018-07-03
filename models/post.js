@@ -4,31 +4,22 @@ module.exports = function (sequelize, DataTypes) {
 
         body_part: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         },
 
         pain_intensity: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         },
 
         pain_characteristics: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
 
         pain_duration: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         },
 
         medications: {
@@ -43,10 +34,7 @@ module.exports = function (sequelize, DataTypes) {
 
         notes: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         }
     });
 

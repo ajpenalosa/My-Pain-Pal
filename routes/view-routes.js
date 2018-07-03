@@ -33,7 +33,7 @@ router.get("/login", function (req, res) {
 
 // Add New
 router.get("/add-new", function (req, res) {
-    res.render('dashboard');
+    res.render('post');
 });
 
 // Journal
@@ -57,13 +57,13 @@ router.get("/body", function (req, res) {
 });
 
 //testing purposes for pain form
-router.get("/posts", function (req, res) {
-    res.render('post');
-});
+// router.get("/posts", function (req, res) {
+//     res.render('post');
+// });
 
 //testing purposes for pain form
-router.get("/journal", function (req, res) {
-    res.render('post');
-});
+// router.get("/journal", function (req, res) {
+//     res.render('post');
+// });
 
 module.exports = router;
