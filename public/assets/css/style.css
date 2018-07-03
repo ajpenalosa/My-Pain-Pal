@@ -248,6 +248,18 @@ footer {
     padding: 20px 0 5px;
 }
 
+footer .nested-columns {
+    padding-bottom: 20px;
+}
+
+footer .nested-columns::after {
+    display: block;
+    content: "";
+    width: 100%;
+    border-bottom: 1px solid #E5E5E5;
+    margin-top: 20px;
+}
+
 footer,
 footer h4 {
     color: #7a7a7a;
@@ -305,7 +317,7 @@ ul.footer-social li a:hover {
 }
 
 footer .copyright {
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 20px;
 }
 
@@ -315,6 +327,8 @@ input#footer-email {
     width: calc( 100% - 85px );
     height: 36px;
     margin-right: 5px;
+    border: 1px solid #E5E5E5;
+    padding-left: 10px; 
 }
 
 .btn-footer-submit {
@@ -578,6 +592,41 @@ input.date-of-birth:before {
     .smiley {
         font-size: 50px;
     }
+
+    /*-- Footer --*/
+
+    footer .double-columns {
+        padding-bottom: 20px;
+    }
+
+    footer .double-columns::after {
+        display: block;
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid #E5E5E5;
+        margin-top: 20px;
+    }
+
+    footer .double-columns:last-of-type::after {
+        border: 0;
+    }
+
+    footer .nested-columns {
+        padding-bottom: 0;
+    }
+
+    footer .nested-columns::after {
+        display: none;
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid #E5E5E5;
+        margin-top: 20px;
+    }
+
+    footer .copyright {
+        font-size: 14px;
+        margin-top: 0;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -616,5 +665,11 @@ input.date-of-birth:before {
     /*-- Quck Log --*/
     .smiley {
         font-size: 80px;
+    }
+
+    /*-- Footer --*/
+
+    footer .double-columns::after {
+        border: 0;
     }
 }
