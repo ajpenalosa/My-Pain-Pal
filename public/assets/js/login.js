@@ -1,10 +1,11 @@
 $(document).ready(function () {
-    var register = ("#regForm");
+    
+    var login = $("#loginForm");
 
-    var emAddr = $("#email");
-    var pWord = $("#password");
+    var emAddr = $("#loginEmail");
+    var pWord = $("#loginPassword");
 
-    $(register).on("submit", function handleFormSubmit(event) {
+    login.on("submit", function handleFormSubmit(event) {
         event.preventDefault();
 
         var existingUser = {
@@ -15,11 +16,12 @@ $(document).ready(function () {
         console.log(existingUser);
 
         $.post('/login', existingUser, function(data) {
-            if (data) {
+            if (data.code !== 504) {
                 alert("Successfully logged in!");
-                window.location.href = '/dashboard';
+                location.assign('/dashboard');
             } else {
-                alert("Log-in was unsuccessful!");
+                alert(data.failed);
+                location.reload();
             };
         });
     });

@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    var register = ("#regForm");
+    var register = $("#regForm");
+    
     var fName = $("#first-name");
     var lName = $("#last-name");
     var emAddr = $("#email");
@@ -8,7 +9,7 @@ $(document).ready(function() {
     var bday = $("#dob");
     var gndr = $("#gender");
 
-    $(register).on("submit", function handleFormSubmit(event) {
+    register.on("submit", function handleFormSubmit(event) {
         event.preventDefault();
 
         if (fName.val() === "" || lName.val() === "" || emAddr.val() === "" || pWord.val() === "" || bday.val() === "") {
@@ -22,19 +23,16 @@ $(document).ready(function() {
                 dob: bday.val(),
                 gender: gndr.val()
             };
-            console.log(newUser);
 
             $.post('/register', newUser, function (data) {
-                console.log(data.token);
-
-                if (data) {
-                    alert("Registration was successful, welcome to MyPainPal!");
-                    window.location.href = '/posts';
+                if (data.code === 304) {
+                    alert(data.failed);
+                    location.assign('/register');
                 } else {
-                    console.log("Error!");
-                    location.reload();
+                    alert("Registration was successful, welcome to MyPainPal!");
+                    location.assign('/dashboard');
                 };
-            });
+            });          
         }
     });
 })

@@ -54,7 +54,6 @@ $(document).ready(function() {
 
     // Restarts video when slide becomes active
     $("#home-carousel").on("slide.bs.carousel", function() {
-        console.log($(this).find(".active").find("video").attr("id"));
 
         var video = $(this).find(".active").find("video").attr("id");
 
@@ -73,16 +72,25 @@ $(document).ready(function() {
     })
 
     // Making height of carousel item the height of the browser window
-    var $item = $(".carousel-item");
-    var $wHeight = $(window).height();
-    $item.height($wHeight);
+    var carouselItem = $(".carousel-item");
+    var windowHeight = $(window).height();
+    carouselItem.height(windowHeight);
 
+    // Referencing divs
+    var homeNav = $(".home-nav");
+    var carouselContent = $(".carousel-content");
+    var downArrow = $(".down-arrow");
+
+    // Saving heights in variables
+    var homeNavHeight = homeNav.height();
+    var carouselContentHeight = carouselContent.height();
+    var downArrowHeight = downArrow.height();
     
     // Resizes heights on window resize
     // =============================================================
     $(window).on('resize', function (){
-        $wHeight = $(window).height();
-        $item.height($wHeight);
+        windowHeight = $(window).height();
+        carouselItem.height(windowHeight);
     });
     
   });
