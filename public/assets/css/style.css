@@ -1,7 +1,8 @@
 /* -----------------------------------
     Legend
     
-    color: #2D93C5;
+    Blue: #2D93C5;
+    Darker Blue: #1c6588;
 
 ----------------------------------- */
 
@@ -230,14 +231,15 @@ a.footer-toggle:hover .arrow-right {
 }
 
 .dashboard-tabs ul li a:hover {
-    background-color: #2D93C5;
+    color: #2D93C5;
+    background-color: #e1e1e1;
     text-decoration: none;
 }
 
 .dashboard-tabs a.active,
 .dashboard-tabs a.active:hover {
-    color: #2D93C5;
-    background-color: #e1e1e1;
+    background-color: #1c6588;
+    color: #e1e1e1;
 }
 
 /* -----------------------------------
@@ -584,6 +586,100 @@ input.date-of-birth:before {
 }
 
 /* -----------------------------------
+	Page Titles
+--------------------------------------------------------------------------------------------- */
+
+.page-title {
+    background-color: #1c6588;
+    margin-bottom: 20px;
+}
+
+.page-title h1 {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    padding: 40px 0;
+}
+
+/* -----------------------------------
+	Pain Journal
+--------------------------------------------------------------------------------------------- */
+
+.post-item {
+    background: #F0F0F0;
+    color: #4A4A4A;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.post-item .header {
+    background-color: #2D93C5;
+}
+
+.post-item h3 {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    font-weight: 400;
+    padding: 10px 0;
+}
+
+.post-item h4 {
+    color: #2D93C5;
+    padding-top: 20px;
+}
+
+.post-item p {
+    margin-bottom: 0;
+}
+
+.post-item .attention {
+    font-size: 24px;
+}
+
+.attention i {
+    font-size: 36px;
+    vertical-align: middle;
+}
+
+.button-wrapper {
+    background-color: #C4C4C4;
+}
+
+.post-button {
+    margin: 0 10px;
+    background-color: transparent;
+}
+
+.post-button:hover {
+    color: #FFF;
+}
+
+.section {
+    padding: 0 30px;
+}
+
+.medications {
+    padding-top: 20px;
+}
+
+.post-item .section::after {
+    display: block;
+    content: "";
+    width: 100%;
+    border-bottom: 1px solid #C4C4C4;
+    margin-top: 20px;
+}
+
+.post-item .section.notes::after {
+    border: 0;
+}
+
+.notes {
+    text-align: left;
+}
+
+/* -----------------------------------
 	Media Queries
 --------------------------------------------------------------------------------------------- */
 
@@ -591,6 +687,24 @@ input.date-of-birth:before {
 @media (min-width: 576px) {
     .smiley {
         font-size: 50px;
+    }
+
+    /*-- Journal --*/
+
+    .post-item .section::after {
+        border-bottom: 0;
+    }
+
+    .post-item .wrap-all {
+        padding: 0 15px;
+    }
+
+    .post-item .wrap-two::after {
+        display: block;
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid #C4C4C4;
+        margin-top: 20px;
     }
 
     /*-- Footer --*/
@@ -656,6 +770,24 @@ input.date-of-birth:before {
     /*-- Quick Log --*/
     .smiley {
         font-size: 70px;
+    }
+
+    /*-- Journal --*/
+
+    .post-item .wrap-all {
+        padding: 0;
+        margin: 0 15px;
+    }
+
+    .post-item .wrap-all::after {
+        display: block;
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid #C4C4C4;
+    }
+
+    .post-item .wrap-two::after {
+        border: 0;
     }
 }
 
