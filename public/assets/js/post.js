@@ -193,11 +193,7 @@ $(document).ready(function () {
         var save = document.getElementById('Save');
 
         save.onclick = function (pickEvent) {
-
             $("#male").hide();
-            // objectId.push(bodyPart);
-            // console.log("Saved obj on click: ", objectId);
-
         };
 
 
@@ -242,11 +238,6 @@ $(document).ready(function () {
         //save the current scene, use data in future if needed
         save.onclick = function (pickEvent) {
             $("#female").hide();
-
-            // objectID.push(bodyPart);
-
-            // console.log("Saved obj on click: ", objectID);
-
         };
     }
 
