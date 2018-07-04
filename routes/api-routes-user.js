@@ -79,10 +79,59 @@ module.exports = function(app) {
         });
     });
     
-    app.get('/logout', function(req, res) {
+    app.get('/dashboard', function (req, res) {
         res.clearCookie("token");
         req.session.destroy();
         res.end();
     });
+
+    app.get('/body', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/calendar', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/chart', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/dashboard', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/index', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/journal', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/post', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/add-new', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
 }
 
