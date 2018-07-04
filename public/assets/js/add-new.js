@@ -11,8 +11,17 @@ $(document).ready(function () {
     var medications = $("#medications");
     var dosage = $("#dosage");
     var notes = $("#notes");
+    var female_div = $("#female-div");
+    var male_div = $("#male-div");
     var url = window.location.search;
     var userId;
+    var humanFemale = new HumanAPI("embedded-human");
+    var humanMale = new HumanAPI("embeddedHuman");
+    var bodyPart;
+    var userFemaleArr = [];
+    var userMaleArr = [];
+    female_div.hide();
+    male_div.hide();
 
 
 
@@ -30,11 +39,42 @@ $(document).ready(function () {
         $.get("/api/getid/", function (data) {
             userId = data.user;
             console.log("we need the users id help:", data.user);
-            // getPosts(userId);
-        })
-    };
+            getPosts(userId);
+        });
+    }
 
     keepUserIn();
+
+
+
+
+    function getPosts(userId) {
+        console.log("hello");
+        var userIdString = userId || "";
+        console.log(userIdString);
+        if (userIdString) {
+            userIdString = "/id/" + userIdString;
+        }
+        $.get("/api/dashboard/" + userId, function (data) {
+            console.log("these posts are: ", data);
+            posts = data;
+            console.log("what is this: ", posts[0].Posts)
+            var usersPosts = posts[0].Posts;
+            console.log("this one is the users posts console: ", usersPosts);
+
+            if (posts[0].gender === "Female") {
+                female_div.show();
+            } else {
+                male_div.show();
+            }
+
+        });
+    }
+
+
+
+
+
 
     $("#journal-post-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
@@ -54,11 +94,103 @@ $(document).ready(function () {
     });
 
 
+
+    function maleSelect() {
+
+        humanMale.on("scene.picked", function (pickEvent) {
+            if (pickEvent.mode === "singleClick") {
+                bodyPart = pickEvent.objectId;
+                console.log("BODY PART " + bodyPart)
+            }
+            userMaleArr.push(bodyPart);
+            console.log("body part array: ", userMaleArr);
+        });
+
+        $("#btn-Save").on("click", function (event) {
+
+            console.log("SAVED: " + bodyPart);
+            var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
+
+            console.log("Saved F obj on click: ", newBodyPart[1]);
+            console.log("the one should  be  F split up again :", newBodyPart)
+
+            $("#body-part").val(newBodyPart[1]);
+            keepUserIn(userId);
+
+        });
+
+
+        var mode = document.getElementById('male');
+
+        mode.onClick = function () {
+            human.send("scene.pickingMode", "highlight");
+        };
+
+        var save = document.getElementById('Save');
+
+        save.onclick = function (pickEvent) {
+            $("#male").hide();
+            keepUserIn(userId);
+
+        };
+
+
+
+    };
+
+    maleSelect();
+
+
+    function femaleSelect() {
+
+
+        humanFemale.on("scene.picked",
+            function (pickEvent) {
+                if (pickEvent.mode === "singleClick") {
+                    bodyPart = pickEvent.objectId;
+                    console.log("BODY PART " + bodyPart);
+                }
+                userFemaleArr.push(bodyPart);
+                console.log("body part array: ", userFemaleArr);
+
+            });
+
+        $("#btn-save").on("click", function (event) {
+
+            console.log("SAVED: " + bodyPart);
+            var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
+
+            console.log("Saved F obj on click: ", newBodyPart[1]);
+            console.log("the one should  be  F split up again :", newBodyPart)
+            $("#body-part").val(newBodyPart[1]);
+            keepUserIn(userId);
+
+        });
+
+        var mode = document.getElementById('female');
+
+        mode.onClick = function () {
+
+            human.send("scene.pickingMode", "highlight");
+        };
+        var save = document.getElementById('save');
+        //save the current scene, use data in future if needed
+        save.onclick = function (pickEvent) {
+            $("#female").hide();
+            keepUserIn(userId);
+        };
+    }
+
+    femaleSelect();
+
+
+
     function submitPost(Post) {
         $.post("/api/dashboard/", Post, function () {
             window.location.href = "/dashboard";
             keepUserIn(userId);
         });
+         keepUserIn(userId);
     }
 
 
