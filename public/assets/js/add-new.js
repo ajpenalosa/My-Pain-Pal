@@ -39,6 +39,7 @@ $(document).ready(function () {
         $.get("/api/getid/", function (data) {
             userId = data.user;
             console.log("we need the users id help:", data.user);
+            submitPost(Post);
             getPosts(userId);
         });
     }
@@ -115,8 +116,6 @@ $(document).ready(function () {
             console.log("the one should  be  F split up again :", newBodyPart)
 
             $("#body-part").val(newBodyPart[1]);
-            keepUserIn(userId);
-
         });
 
 
@@ -130,8 +129,6 @@ $(document).ready(function () {
 
         save.onclick = function (pickEvent) {
             $("#male").hide();
-            keepUserIn(userId);
-
         };
 
 
@@ -163,7 +160,6 @@ $(document).ready(function () {
             console.log("Saved F obj on click: ", newBodyPart[1]);
             console.log("the one should  be  F split up again :", newBodyPart)
             $("#body-part").val(newBodyPart[1]);
-            keepUserIn(userId);
 
         });
 
@@ -177,7 +173,6 @@ $(document).ready(function () {
         //save the current scene, use data in future if needed
         save.onclick = function (pickEvent) {
             $("#female").hide();
-            keepUserIn(userId);
         };
     }
 
