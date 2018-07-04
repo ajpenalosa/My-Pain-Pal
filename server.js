@@ -7,6 +7,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
+var moment = require("moment");
+var Chart = require("chart.js");
+
 
 // Requiring our models for syncing
 var db = require("./models");
