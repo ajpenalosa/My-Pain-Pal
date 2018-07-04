@@ -651,6 +651,14 @@ input.date-of-birth:before {
     background-color: transparent;
 }
 
+.post-button:focus {
+    box-shadow: 0 0 0 0 rgba(0,123,255,.25);
+}
+
+.post-button:not(:disabled):not(.disabled).active, .post-button:not(:disabled):not(.disabled):active {
+    color: #1c6588;
+}
+
 .post-button:hover {
     color: #FFF;
 }
