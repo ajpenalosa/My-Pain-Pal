@@ -82,7 +82,6 @@ button:focus {
     position: absolute;
     width: 100%;
     bottom: 0;
-    padding-bottom: 10px;
     z-index: 60;
     color: #FFF;
 }

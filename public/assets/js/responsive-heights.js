@@ -1,43 +1,44 @@
 // Responsive Heights
 // =============================================================
 
-// Saving height of window in a variable
-var windowHeight = $(window).height();
-
 // Referencing divs
 var dashboardNav = $(".dashboard-nav");
 var dashboardTabs = $(".dashboard-tabs");
 var dashboardBody = $(".dashboard-body");
 var mainContent = $(".main-content");
-var flexCenter = $(".flex-center");
 var downArrow = $(".down-arrow");
+var footer = $("#footer");
 
 // Saving heights in variables
+var windowHeight = $(window).height();
+var documentHeight = $(document).height();
 var dashboardNavHeight = dashboardNav.height();
 var dashboardTabsHeight = dashboardTabs.height();
-var dashboardBodyHeight = dashboardBody.height();
-var mainContentHeight = mainContent.height();
-var flexCenterHeight = flexCenter.height();
 var downArrowHeight = downArrow.height();
+var footerHeight = footer.height();
 
-var staticHeights = dashboardNavHeight + dashboardTabsHeight + flexCenterHeight + downArrowHeight;
+var staticHeights = dashboardNavHeight + dashboardTabsHeight + downArrowHeight;
 
-if (windowHeight > staticHeights) {
-    // Height of main content div is equal to window height minus dashboard height, tabs height and down arrow height
-    mainContent.height(windowHeight - dashboardNavHeight - dashboardTabsHeight - downArrowHeight);
-    
-    // Height of dashboard body div is equal to window height, minus dashboard height and tabs height
-    dashboardBody.height(windowHeight - dashboardNavHeight - dashboardTabsHeight);
-}
+var dashboardBodyHeight = (windowHeight - dashboardNavHeight - dashboardTabsHeight) + "px";
+var mainContentHeight = (windowHeight - staticHeights) + "px";
+
+dashboardBody.css("min-height", dashboardBodyHeight);
+mainContent.css("min-height", mainContentHeight);
+
+// Hides the down arrow if document height is greater than the window height
+// if ( $(document).height() - footerHeight - 20 > windowHeight ) {
+//     downArrow.hide();
+// }
 
 // Resizes heights on window resize
 // =============================================================
 $(window).on('resize', function (){
     windowHeight = $(window).height();
 
-    if (windowHeight > staticHeights) {
-        mainContent.height(windowHeight - dashboardNavHeight - dashboardTabsHeight - downArrowHeight);
-        dashboardBody.height(windowHeight - dashboardNavHeight - dashboardTabsHeight);
-    }
+    dashboardBodyHeight = (windowHeight - dashboardNavHeight - dashboardTabsHeight) + "px";
+    mainContentHeight = (windowHeight - staticHeights) + "px";
+
+    dashboardBody.css("min-height", dashboardBodyHeight);
+    mainContent.css("min-height", mainContentHeight);
 
 });
