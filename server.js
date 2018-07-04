@@ -28,7 +28,7 @@ app.use(session({
     secret: "whateverwewant",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: "auto", maxAge: 99999 }
+    cookie: { secure: "auto", maxAge: null }
 }));
 
 // Static directory
