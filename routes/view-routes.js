@@ -28,6 +28,7 @@ router.get("/login", function (req, res) {
 
 // Dashboard
 router.get("/dashboard", function (req, res) {
+    console.log("req session on view", req.session)
     res.render('dashboard');
 });
 

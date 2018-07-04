@@ -4,6 +4,12 @@ const encrypt = require("./crypt/encryption.js");
 
 module.exports = function(app) {
 
+    app.get("/api/getid/", function (req,res){
+        res.send(req.session)
+    })
+
+
+
     app.post('/register', function (req, res) {
         let token = randtoken.generate(10);
 
@@ -26,6 +32,7 @@ module.exports = function(app) {
                 }).then(function (dbUser) {
                     res.cookie("token", token);
                     req.session.user = dbUser.id;
+                    console.log("req session", req.session.user)
                     res.json(dbUser);
                 });
             } else {
@@ -78,3 +85,4 @@ module.exports = function(app) {
         res.end();
     });
 }
+

@@ -23,8 +23,6 @@ $(document).ready(function () {
     var humanFemale = new HumanAPI("embedded-human");
     var humanMale = new HumanAPI("embeddedHuman");
     var bodyPart;
-    var objectID = [];
-    var objectId = [];
     var userFemaleArr = [];
     var userMaleArr = [];
     femaleDiv.hide();
@@ -37,10 +35,21 @@ $(document).ready(function () {
         postsContainer.show();
     }
 
-    var userId = 1;
+// var userId = 1;
 
 
-    function getPosts() {
+function keepUserIn(userId){
+ $.get("/api/getid/", function (data) {
+    userId = data.user;
+    console.log("we need the users id help:",data.user);
+    getPosts(userId);
+})
+};
+
+keepUserIn();
+
+
+    function getPosts(userId) {
         console.log("hello");
         var userIdString = userId || "";
         console.log(userIdString);
@@ -48,7 +57,7 @@ $(document).ready(function () {
             userIdString = "/id/" + userIdString;
         }
         $.get("/api/dashboard/" + userId, function (data) {
-            console.log("posts: ", data);
+            console.log("these posts are: ", data);
             posts = data;
             console.log("what is this: ", posts[0].Posts)
             var usersPosts = posts[0].Posts;
@@ -88,35 +97,6 @@ $(document).ready(function () {
         });
     }
 
-    getPosts();
-
-    function getJournalPosts() {
-        console.log("hello");
-        var userIdString = userId || "";
-        console.log(userIdString);
-        if (userIdString) {
-            userIdString = "/id/" + userIdString;
-        }
-        $.get("/api/journal/" + userId, function (data) {
-            console.log("posts: ", data);
-            posts = data;
-            for (var i = 0; i < posts.Posts.length; i++) {
-                console.log(JSON.stringify(posts.Posts[i]));
-                var postJournal = $("<div>");
-                postJournal.append("Body Part: " + posts.Posts[i].body_part);
-                postJournal.append("Pain Intensity: " + posts.Posts[i].pain_intensity);
-                postJournal.append("Pain Characterstics: " + posts.Posts[i].pain_characteristics);
-                postJournal.append("Pain Duration: " + posts.Posts[i].pain_duration);
-                postJournal.append("Medications: " + posts.Posts[i].medications);
-                postJournal.append("Dosage: " + posts.Posts[i].dosage);
-                postJournal.append("Notes: " + posts.Posts[i].notes);
-                journalContainer.append(postJournal);
-            }
-        });
-    }
-
-    getJournalPosts();
-
 
     $("#post-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
@@ -134,21 +114,6 @@ $(document).ready(function () {
         submitPost(newPost);
     });
 
-    $("#journal-post-submit").on("click", function handleFormSubmit(event) {
-        console.log("clicked");
-        event.preventDefault();
-        var newPost = {
-            body_part: body_part.val().trim(),
-            pain_intensity: journal_pain_intensity.val().trim(),
-            pain_characteristics: pain_characteristics.val().trim(),
-            pain_duration: pain_duration.val().trim(),
-            medications: medications.val().trim(),
-            dosage: dosage.val().trim(),
-            notes: notes.val().trim(),
-        }
-        console.log(newPost);
-        submitPost(newPost);
-    });
 
     $("#quick-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
@@ -246,7 +211,7 @@ $(document).ready(function () {
     function submitPost(Post) {
         $.post("/api/dashboard/", Post, function () {
             window.location.href = "/dashboard";
-            
+            keepUserIn(userId);
         });
     }
 });

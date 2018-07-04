@@ -44,7 +44,7 @@ module.exports = function (app) {
     });
 
     app.post("/api/dashboard", function (req, res) {
-        console.log(req.body);
+        console.log("tell us what this session is:", req.session);
         db.Post.create({
 
                 body_part: req.body.body_part,
@@ -54,7 +54,7 @@ module.exports = function (app) {
                 medications: req.body.medications,
                 dosage: req.body.dosage,
                 notes: req.body.notes,
-                UserId: "1" /*req.session.id*/
+                UserId: req.session.user
 
             })
             .then(function (dbPost) {
@@ -73,7 +73,7 @@ module.exports = function (app) {
                 medications: req.body.medications,
                 dosage: req.body.dosage,
                 notes: req.body.notes,
-                UserId: "1" /*req.session.id*/
+                UserId: req.session.user
 
             })
             .then(function (dbPost) {
@@ -92,7 +92,7 @@ module.exports = function (app) {
                 medications: req.body.medications,
                 dosage: req.body.dosage,
                 notes: req.body.notes,
-                UserId: "1" /*req.session.id*/
+                UserId: req.session.user
 
             })
             .then(function (dbPost) {
