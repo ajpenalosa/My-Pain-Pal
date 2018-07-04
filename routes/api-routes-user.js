@@ -2,7 +2,7 @@ const randtoken = require("rand-token");
 const db = require("../models");
 const encrypt = require("./crypt/encryption.js");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
     app.post('/register', function (req, res) {
         let token = randtoken.generate(10);
@@ -11,7 +11,7 @@ module.exports = function(app) {
             where: {
                 email: req.body.email
             }
-        }).then(function(result) {
+        }).then(function (result) {
             if (!result) {
                 let encryptPw = encrypt.encrypt(req.body.password);
 
@@ -26,6 +26,7 @@ module.exports = function(app) {
                 }).then(function (dbUser) {
                     res.cookie("token", token);
                     req.session.user = dbUser.id;
+                    console.log("SESSION ID*********", req.session.user);
                     res.json(dbUser);
                 });
             } else {
@@ -42,7 +43,7 @@ module.exports = function(app) {
             where: {
                 email: req.body.email
             }
-        }).then(function(result) {
+        }).then(function (result) {
             let token = randtoken.generate(10);
             let dbPassword = result.password;
             let decryptPw = encrypt.decrypt(dbPassword);
@@ -71,10 +72,59 @@ module.exports = function(app) {
             };
         });
     });
-    
-    app.get('/logout', function(req, res) {
+
+    app.get('/dashboard', function (req, res) {
         res.clearCookie("token");
         req.session.destroy();
         res.end();
     });
-}
+
+    app.get('/body', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/calendar', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/chart', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/dashboard', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/index', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/journal', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/post', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/add-new', function (req, res) {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+    
+};
