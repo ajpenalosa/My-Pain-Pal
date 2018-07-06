@@ -3,7 +3,7 @@ $(document).ready(function(event) {
     var logOut = $("#log-out");
 
     logOut.on("click", () => {
-        $.get('/dashboard', () => {
+        $.get('/', () => {
             console.log("You have been logged out!");
             location.assign('/');
         });
@@ -48,4 +48,5 @@ $(document).ready(function(event) {
             location.assign('/');
         });
     });
+    
 });
