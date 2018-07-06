@@ -1,46 +1,51 @@
-// Responsive Heights
-// =============================================================
+$(document).ready(function() {
 
-// Referencing divs
-var dashboardNav = $(".dashboard-nav");
-var dashboardTabs = $(".dashboard-tabs");
-var dashboardBody = $(".dashboard-body");
-var mainContent = $(".main-content");
-var downArrow = $(".down-arrow");
-var footer = $("#footer");
+    // Responsive Heights
+    // =============================================================
 
-// Saving heights in variables
-var windowHeight = $(window).height();
-var dashboardNavHeight = dashboardNav.height();
-var dashboardTabsHeight = dashboardTabs.height();
-var downArrowHeight = downArrow.height();
-var footerHeight = footer.height();
+    // Referencing divs
+    var dashboardNav = $(".dashboard-nav");
+    var dashboardTabs = $(".dashboard-tabs");
+    var dashboardBody = $(".dashboard-body");
+    var mainContent = $(".main-content");
+    var downArrow = $(".down-arrow");
+    var footer = $("#footer");
 
-var staticHeights = dashboardNavHeight + dashboardTabsHeight + downArrowHeight;
+    // Saving heights in variables
+    var windowHeight = $(window).height();
+    var dashboardNavHeight = dashboardNav.height();
+    var dashboardTabsHeight = dashboardTabs.height();
+    var downArrowHeight = downArrow.height();
+    var footerHeight = footer.height();
 
-var dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
-var mainContentHeight = windowHeight - staticHeights;
+    var staticHeights = dashboardNavHeight + dashboardTabsHeight + downArrowHeight;
 
-dashboardBody.css("min-height", dashboardBodyHeight);
-mainContent.css("min-height", mainContentHeight);
-
-console.log("Actual Height: " + dashboardBody.height());
-console.log("Dashbord Height: " + dashboardBodyHeight);
-
-// Hides the down arrow
-if ( dashboardBody.height() > dashboardBodyHeight ) {
-    downArrow.hide();
-}
-
-// Resizes heights on window resize
-// =============================================================
-$(window).on('resize', function (){
-    windowHeight = $(window).height();
-
-    dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
-    mainContentHeight = windowHeight - staticHeights;
+    var dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
+    var mainContentHeight = windowHeight - staticHeights;
 
     dashboardBody.css("min-height", dashboardBodyHeight);
     mainContent.css("min-height", mainContentHeight);
+
+    console.log("Actual Height: " + dashboardBody.height());
+    console.log("Main Content Height: " + mainContent.height());
+    console.log("Dashbord Height: " + dashboardBodyHeight);
+
+    // Hides the down arrow
+    // if ( dashboardBody.height() > dashboardBodyHeight ) {
+    //     downArrow.hide();
+    // }
+
+    // Resizes heights on window resize
+    // =============================================================
+    $(window).on('resize', function (){
+        windowHeight = $(window).height();
+
+        dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
+        mainContentHeight = windowHeight - staticHeights;
+
+        dashboardBody.css("min-height", dashboardBodyHeight);
+        mainContent.css("min-height", mainContentHeight);
+
+    });
 
 });

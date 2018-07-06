@@ -32,7 +32,7 @@ switch (window.location.pathname) {
     break;
 
     case "/chart":
-        body.addClass("journal");
+        body.addClass("chart");
         $(".link-chart").addClass("active").removeAttr("href");
         keepUserIn(userId);
     break;

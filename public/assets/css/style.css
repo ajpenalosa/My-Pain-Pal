@@ -78,6 +78,11 @@ button:focus {
 
 /*----- Down Arrow ----*/
 
+body.add-new .down-arrow,
+body.journal .down-arrow  {
+    display: none;
+}
+
 .down-arrow {
     position: absolute;
     width: 100%;
