@@ -95,6 +95,7 @@ a.footer-toggle {
     display: inline-block;
     width: 60px;
     height: 36px;
+    cursor: pointer;
 }
 
 .arrow-left {
@@ -705,6 +706,14 @@ input.date-of-birth:before {
     text-align: left;
 }
 
+.button-wrapper {
+    padding: 0 15px;
+}
+
+.button-wrapper p {
+    padding: .375rem 0;
+}
+
 /* -----------------------------------
 	Media Queries
 --------------------------------------------------------------------------------------------- */
@@ -755,6 +764,18 @@ input.date-of-birth:before {
         width: 100%;
         border-bottom: 1px solid #C4C4C4;
         margin-top: 20px;
+    }
+
+    .post-item .date {
+        text-align: left;
+    }
+
+    .post-item .buttons {
+        text-align: right;
+    }
+
+    .post-item .post-button {
+        margin: 0;
     }
 
     /*-- Footer --*/
