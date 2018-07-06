@@ -5,10 +5,8 @@ const encrypt = require("./crypt/encryption.js");
 module.exports = function(app) {
 
     app.get("/api/getid/", function (req,res){
-        res.send(req.session)
+        res.send(req.session);
     })
-
-
 
     app.post('/register', function (req, res) {
         let token = randtoken.generate(10);
@@ -32,7 +30,6 @@ module.exports = function(app) {
                 }).then(function (dbUser) {
                     res.cookie("token", token);
                     req.session.user = dbUser.id;
-                    console.log("req session", req.session.user)
                     res.json(dbUser);
                 });
             } else {
@@ -78,11 +75,131 @@ module.exports = function(app) {
             };
         });
     });
-    
-    app.get('/logout', function(req, res) {
+
+    app.get('/', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/body', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/calendar', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/chart', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/dashboard', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/index', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/journal', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/post', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/add-new', (req, res) => {
+        if (req.session.user) {
+            res.send(`${req.session.user.first_name} is currently logged in.`);
+        } else {
+            return res.redirect('/');
+        };
+    });
+
+    app.get('/', (req, res) => {
         res.clearCookie("token");
         req.session.destroy();
         res.end();
     });
-}
+    
+    app.get('/body', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
 
+    app.get('/calendar', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/chart', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/dashboard', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/index', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/journal', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/post', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+    app.get('/add-new', (req, res) => {
+        res.clearCookie("token");
+        req.session.destroy();
+        res.end();
+    });
+
+};
