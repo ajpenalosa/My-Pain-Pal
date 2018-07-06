@@ -99,7 +99,7 @@ $(document).ready(function () {
                 }
 
                 if ( posts.Posts[i].notes === null || !posts.Posts[i].notes ) {
-                    painNotes = "None";
+                    painNotes = "Quick log";
                 }
                 else {
                     painNotes = posts.Posts[i].notes;
