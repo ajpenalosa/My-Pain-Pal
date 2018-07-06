@@ -1,6 +1,12 @@
 // Loading jQuery when document is ready
 // =============================================================
 $(document).ready(function() {
+    
+    switch (window.location.pathname) {
+        case "/":
+            $("body").addClass("home");
+        break;
+    }
 
     // Displaying current year in the footer
     var currentYear = (new Date).getFullYear();

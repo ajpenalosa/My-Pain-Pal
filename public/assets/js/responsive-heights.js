@@ -9,6 +9,7 @@ $(document).ready(function() {
     var dashboardBody = $(".dashboard-body");
     var mainContent = $(".main-content");
     var downArrow = $(".down-arrow");
+
     var footer = $("#footer");
 
     // Saving heights in variables

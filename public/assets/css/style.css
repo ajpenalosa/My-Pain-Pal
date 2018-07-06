@@ -84,11 +84,15 @@ body.journal .down-arrow  {
 }
 
 .down-arrow {
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0;
     z-index: 60;
     color: #FFF;
+}
+
+body.home .down-arrow {
+    position: absolute;
 }
 
 .down-arrow.down-interior {
