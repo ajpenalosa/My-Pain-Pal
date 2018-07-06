@@ -2,7 +2,8 @@ $(document).ready(function () {
 
     var postsContainer = $("#posts-container");
     var journalContainer = $(".display-journal");
-    var body_part = $("#body-part")
+    var body_part = $("#body-part");
+    var quick_body_part = $("#quick-body-part");
     var pain_intensity = $("#new-pain-level-range");
     var existing_pain_intensity = $("#pain-level-range");
     var journal_pain_intensity = $("#post-pain-level-range");
@@ -84,6 +85,7 @@ keepUserIn();
                 $(".yesterdays-pain").text("Hello, your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity);
                 // $(".yesterdays-pain").append(userPostsDiv);
                 bodyPartDiv.text(usersPosts[usersPosts.length - 1].body_part);
+                quick_body_part.val(usersPosts[usersPosts.length - 1].body_part);
                 quickPostDiv.show();
                 smileyContainer.show();
             }
@@ -119,6 +121,7 @@ keepUserIn();
         console.log("clicked");
         event.preventDefault();
         var newPost = {
+            body_part: quick_body_part.val().trim(),
             pain_intensity: existing_pain_intensity.val().trim(),
         }
         console.log(newPost);

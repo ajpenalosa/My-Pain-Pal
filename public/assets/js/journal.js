@@ -48,6 +48,7 @@ $(document).ready(function () {
                 var painMedications = "";
                 var painDosage = "";
                 var painNotes = "";
+                var createdAt = moment(posts.Posts[i].createdAt).format('MMMM D, YYYY - h:mma');
 
                 // Chooses which icon to display based on pain intensity level
 
@@ -98,7 +99,7 @@ $(document).ready(function () {
                 }
 
                 if ( posts.Posts[i].notes === null || !posts.Posts[i].notes ) {
-                    painNotes = "None";
+                    painNotes = "Quick log";
                 }
                 else {
                     painNotes = posts.Posts[i].notes;
@@ -144,9 +145,18 @@ $(document).ready(function () {
                     "<div class='section notes col-sm-12'>" +
                         "<h4>Notes</h4><p>" + painNotes + "</p>" +
                     "</div>" +
-                    "<div class='col-sm-12 button-wrapper'>" +
-                        "<button id='edit' class='btn post-button'><i class='fas fa-edit'></i></button>" +
-                        "<button id='trash' class='btn post-button'><i class='fas fa-trash-alt'></i></button>" +
+                    "<div class='col-12'>" +
+                        "<div class='row button-wrapper'>" +
+                            "<div class='col-sm-8 date'>" +
+                                "<p>" +
+                                    createdAt +
+                                "</p>" +
+                            "</div>" +
+                            "<div class='col-sm-4 buttons'>" +
+                                "<button id='edit' class='btn post-button'><i class='fas fa-edit'></i></button>" +
+                                "<button id='trash' class='btn post-button'><i class='fas fa-trash-alt'></i></button>" +
+                            "</div>" +
+                        "</div>" +
                     "</div>" +
                 "</div>";
 

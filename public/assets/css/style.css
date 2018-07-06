@@ -78,12 +78,21 @@ button:focus {
 
 /*----- Down Arrow ----*/
 
+body.add-new .down-arrow,
+body.journal .down-arrow  {
+    display: none;
+}
+
 .down-arrow {
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0;
     z-index: 60;
     color: #FFF;
+}
+
+body.home .down-arrow {
+    position: absolute;
 }
 
 .down-arrow.down-interior {
@@ -95,6 +104,7 @@ a.footer-toggle {
     display: inline-block;
     width: 60px;
     height: 36px;
+    cursor: pointer;
 }
 
 .arrow-left {
@@ -499,6 +509,7 @@ input.date-of-birth:before {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
 }
 
 .flex-center {
@@ -609,13 +620,13 @@ input.date-of-birth:before {
 
 .page-title {
     background-color: #1c6588;
-    margin-bottom: 20px;
 }
 
 .page-title h1 {
+    font-size: 1.2rem;
     margin-bottom: 0;
     text-transform: uppercase;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 /* -----------------------------------
@@ -705,6 +716,14 @@ input.date-of-birth:before {
     text-align: left;
 }
 
+.button-wrapper {
+    padding: 0 15px;
+}
+
+.button-wrapper p {
+    padding: .375rem 0;
+}
+
 /* -----------------------------------
 	Media Queries
 --------------------------------------------------------------------------------------------- */
@@ -733,6 +752,13 @@ input.date-of-birth:before {
         padding: 15px 0;
     }
 
+    /*-- Page Title --*/
+
+    .page-title h1 {
+        font-size: 1.6rem;
+        padding: 24px 0;
+    }
+
     /*-- Quick Log --*/
 
     .smiley {
@@ -755,6 +781,18 @@ input.date-of-birth:before {
         width: 100%;
         border-bottom: 1px solid #C4C4C4;
         margin-top: 20px;
+    }
+
+    .post-item .date {
+        text-align: left;
+    }
+
+    .post-item .buttons {
+        text-align: right;
+    }
+
+    .post-item .post-button {
+        margin: 0;
     }
 
     /*-- Footer --*/
@@ -811,6 +849,13 @@ input.date-of-birth:before {
         font-size: 26px;
     }
 
+    /*-- Page Title --*/
+
+    .page-title h1 {
+        font-size: 1.8rem;
+        padding: 30px 0;
+    }
+
     /*-- Quick Log --*/
     .smiley {
         font-size: 60px;
@@ -825,6 +870,13 @@ input.date-of-birth:before {
         vertical-align: top;
         font-size: 16px;
         margin-left: 4px;
+    }
+
+    /*-- Page Title --*/
+
+    .page-title h1 {
+        font-size: 2rem;
+        padding: 34px 0;
     }
 
     /*-- Quick Log --*/
@@ -853,6 +905,13 @@ input.date-of-birth:before {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
+    /*-- Page Title --*/
+
+    .page-title h1 {
+        font-size: 2.5rem;
+        padding: 40px 0;
+    }
 
     /*-- Quck Log --*/
     .smiley {

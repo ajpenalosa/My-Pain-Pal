@@ -1,4 +1,5 @@
-{{> dashboard/nav}} {{> dashboard/tabs}}
+{{> dashboard/nav}}
+{{> dashboard/tabs}}
 
 <div class="dashboard-body">
 
@@ -9,6 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
+                        <input type="hidden" class="form-control" id="quick-body-part">
                         <div class="body-part text-center">
                          
                                     {{!-- Right Arm --}}
@@ -160,7 +162,7 @@
     </div>
     <!-- /main-content -->
 
-    {{> dashboard/down-arrow}}
+    {{> down-arrow}}
 
 </div>
 <!-- /dashboard-body -->
@@ -179,6 +181,7 @@
 <!-- JavaScript -->
 <script type="text/JavaScript" src="./assets/js/javascript.js"></script>
 <script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
+<script type="text/JavaScript" src="./assets/js/responsive-heights.js"></script>
 <script type="text/JavaScript" src="./assets/js/quick-log.js"></script>
 <script type="text/JavaScript" src="./assets/js/post.js"></script>
 <script type="text/JavaScript" src="./assets/js/female.js"></script>

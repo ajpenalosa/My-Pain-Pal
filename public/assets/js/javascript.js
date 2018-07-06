@@ -1,12 +1,20 @@
 // Loading jQuery when document is ready
 // =============================================================
 $(document).ready(function() {
+    
+    switch (window.location.pathname) {
+        case "/":
+            $("body").addClass("home");
+        break;
+    }
 
     // Displaying current year in the footer
     var currentYear = (new Date).getFullYear();
     $(".current-year").text(currentYear);
 
-    // On click event to show/hide footer
+    // Show/Hide Footer
+    // =============================================================
+
     var footerToggle = $(".footer-toggle");
 
     footerToggle.on("click", function() {
@@ -16,8 +24,9 @@ $(document).ready(function() {
         var arrowRight = $(".arrow-right");
 
         if ( toggleState === "show" ) {
+            // Scrolls to the bottom of the document
+            $(window).scrollTop($(document).height());
             $(this).attr("data-toggle", "hide");
-            $(this).attr("href", "#footer");
             $(this).css({
                 width: "36px"
             });
@@ -29,8 +38,9 @@ $(document).ready(function() {
             });
         }
         else {
+            // Scrolls to the top
+            $(window).scrollTop(0);
             $(this).attr("data-toggle", "show");
-            $(this).attr("href", "#top");
             $(this).css({
                 width: "60px"
             });
