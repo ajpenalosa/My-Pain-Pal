@@ -8,6 +8,7 @@ $(document).ready(function() {
     var dashboardTabs = $(".dashboard-tabs");
     var dashboardBody = $(".dashboard-body");
     var mainContent = $(".main-content");
+    var pageTitle = $(".page-title");
     var downArrow = $(".down-arrow");
 
     var footer = $("#footer");
@@ -17,12 +18,27 @@ $(document).ready(function() {
     var dashboardNavHeight = dashboardNav.height();
     var dashboardTabsHeight = dashboardTabs.height();
     var downArrowHeight = downArrow.height();
+    var pageTitleHeight = pageTitle.height();
     var footerHeight = footer.height();
 
     var staticHeights = dashboardNavHeight + dashboardTabsHeight + downArrowHeight;
 
     var dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
-    var mainContentHeight = windowHeight - staticHeights;
+
+
+    switch (window.location.pathname) {
+        case "/dashboard":
+
+        var mainContentHeight = windowHeight - staticHeights;
+
+        break;
+
+        default:
+
+        var mainContentHeight = windowHeight - staticHeights - pageTitleHeight;
+
+        break;
+    }
 
     dashboardBody.css("min-height", dashboardBodyHeight);
     mainContent.css("min-height", mainContentHeight);
@@ -40,9 +56,23 @@ $(document).ready(function() {
     // =============================================================
     $(window).on('resize', function (){
         windowHeight = $(window).height();
+        pageTitleHeight = pageTitle.height();
 
         dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
-        mainContentHeight = windowHeight - staticHeights;
+
+        switch (window.location.pathname) {
+            case "/dashboard":
+    
+            var mainContentHeight = windowHeight - staticHeights;
+    
+            break;
+    
+            default:
+    
+            var mainContentHeight = windowHeight - staticHeights - pageTitleHeight;
+    
+            break;
+        }
 
         dashboardBody.css("min-height", dashboardBodyHeight);
         mainContent.css("min-height", mainContentHeight);
