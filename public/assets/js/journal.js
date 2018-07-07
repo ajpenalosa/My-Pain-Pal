@@ -1,13 +1,13 @@
 $(document).ready(function () {
 
     var journalContainer = $(".display-journal");
-    var body_part = $("#body-part")
-    var journal_pain_intensity = $("#post-pain-level-range");
-    var pain_characteristics = $("#pain-char");
-    var pain_duration = $("#pain-duration");
-    var medications = $("#medications");
-    var dosage = $("#dosage");
-    var notes = $("#notes");
+    var body_part = $(".bodyPart");
+    var journal_pain_intensity = $(".painIntensity");
+    var pain_characteristics = $(".painChar");
+    var pain_duration = $(".painDur");
+    var medications = $(".painMeds");
+    var dosage = $(".painDos");
+    var notes = $(".painNotes");
     var userId;
 
 
@@ -115,35 +115,35 @@ $(document).ready(function () {
                 var postHTML =
                 "<div class='row'>" + 
                     "<div class='header col-sm-12'>" +
-                        "<h3>" + posts.Posts[i].body_part + "</h3>" +
+                        "<h3 class = 'bodyPart'>" + posts.Posts[i].body_part + "</h3>" +
                     "</div>" +
                     "<div class='col-12'>" +
                         "<div class='row wrap-all'>" +
                             "<div class='col-lg-6 wrap-two'>" +
                                 "<div class='row'>" +
                                     "<div class='section intensity col-sm-6'>" +
-                                        "<h4>Intensity Level</h4><p><strong class='attention'>" + painIcon + " " + painIntensity + "</strong></p>" +
+                                        "<h4>Intensity Level</h4><p class = 'painIntensity'><strong class='attention'>" + painIcon + " " + painIntensity + "</strong></p>" +
                                     "</div>" +
                                     "<div class='section characteristic col-sm-6'>" +
-                                        "<h4>Characteristic</h4><p><strong class='attention'>" + painCharacteristic + "</strong></p>" +
+                                        "<h4>Characteristic</h4><p class = 'painChar'><strong class='attention'>" + painCharacteristic + "</strong></p>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +
                             "<div class='col-lg-6 wrap-two'>" +
                                 "<div class='row'>" +
                                     "<div class='section duration col-sm-6'>" +
-                                        "<h4>Duration</h4><p><strong class='attention'>" + painDuration + "</strong></p>" +
+                                        "<h4>Duration</h4><p class = 'painDur'><strong class='attention'>" + painDuration + "</strong></p>" +
                                     "</div>" +
                                     "<div class='section medications col-sm-6'>" +
-                                        "<p><strong>Medications:</strong> " + painMedications + "</p>" +
-                                        "<p><strong>Dosage:</strong> " + painDosage + "</p>" +
+                                        "<p class = 'painMeds'><strong>Medications:</strong> " + painMedications + "</p>" +
+                                        "<p class ='painDos'><strong>Dosage:</strong> " + painDosage + "</p>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +
                         "</div>" +
                     "</div>" +
                     "<div class='section notes col-sm-12'>" +
-                        "<h4>Notes</h4><p>" + painNotes + "</p>" +
+                        "<h4>Notes</h4><p class = 'painNotes'>" + painNotes + "</p>" +
                     "</div>" +
                     "<div class='col-12'>" +
                         "<div class='row button-wrapper'>" +
@@ -154,7 +154,7 @@ $(document).ready(function () {
                             "</div>" +
                             "<div class='col-sm-4 buttons'>" +
                                 "<button id='edit' class='btn post-button'><i class='fas fa-edit'></i></button>" +
-                                "<button id='trash' class='btn post-button'><i class='fas fa-trash-alt'></i></button>" +
+                                "<button id='delete' class='btn post-button'><i class='fas fa-trash-alt'></i></button>" +
                             "</div>" +
                         "</div>" +
                     "</div>" +
@@ -165,6 +165,12 @@ $(document).ready(function () {
                 journalContainer.prepend(postJournal);
             }
         });
+
+        $(document).on("click", "#edit", function(event){
+            console.log("clicked");
+        });
+
+
     }
 
 
