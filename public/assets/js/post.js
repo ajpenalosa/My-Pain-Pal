@@ -178,7 +178,6 @@ $(document).ready(function () {
             });
 
         $("#btn-save-female").on("click", function(event) {
-            console.log("CLICKED!!!!!!!!!!!!!!!!!!!!");
 
             console.log("SAVED: " + bodyPart);
             var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
