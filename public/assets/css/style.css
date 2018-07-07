@@ -551,34 +551,6 @@ input#body-part {
     width: 100%;
 }
 
-#posts-container .custom-field {
-    border: 0;
-    border-bottom: 3px solid #1c66887e;
-    border-radius: 0;
-    background-color: transparent;
-    padding-left: 0;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-}
-
-#posts-container .custom-field:focus {
-    box-shadow: 0 0 0 0.2rem rgba(197,96,45,.25);
-    padding-left: 10px;
-}
-
-#posts-container .custom-field::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: rgba(0, 0, 0, 0.5);
-    opacity: 1; /* Firefox */
-}
-
-#posts-container .custom-field:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: rgba(0, 0, 0, 0.5);
-}
-
-#posts-container .custom-field::-ms-input-placeholder { /* Microsoft Edge */
-    color: rgba(0, 0, 0, 0.5);
-}
-
 .select-message-wrapper {
     display: none;
     position: absolute;
@@ -717,6 +689,38 @@ input#body-part {
     color: #000;
     font-size: 22px;
     margin-bottom: 10px;
+}
+
+/* -----------------------------------
+	Forms
+--------------------------------------------------------------------------------------------- */
+
+.custom-field {
+    border: 0;
+    border-bottom: 3px solid #1c66887e;
+    border-radius: 0;
+    background-color: transparent;
+    padding-left: 0;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+.custom-field:focus {
+    box-shadow: 0 0 0 0.2rem rgba(197,96,45,.25);
+    padding-left: 10px;
+}
+
+.custom-field::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 0, 0, 0.5);
+    opacity: 1; /* Firefox */
+}
+
+.custom-field:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-field::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /* -----------------------------------
