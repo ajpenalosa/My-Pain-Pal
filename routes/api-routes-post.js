@@ -43,6 +43,17 @@ module.exports = function (app) {
             });
     });
 
+    app.get("/api/chart/:id", function(req, res) {
+        db.User.findAll({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Post]
+        }).then(function(dbPost) {
+            res.json(dbPost);
+        });
+    });
+
     app.post("/api/dashboard", function (req, res) {
         console.log("tell us what this session is:", req.session);
         db.Post.create({
