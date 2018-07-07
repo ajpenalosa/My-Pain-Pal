@@ -8,6 +8,7 @@ $(document).ready(function() {
     var dashboardTabs = $(".dashboard-tabs");
     var dashboardBody = $(".dashboard-body");
     var mainContent = $(".main-content");
+    var welcomeMessage = $(".welcome-message");
     var pageTitle = $(".page-title");
     var downArrow = $(".down-arrow");
 
@@ -18,6 +19,7 @@ $(document).ready(function() {
     var dashboardNavHeight = dashboardNav.height();
     var dashboardTabsHeight = dashboardTabs.height();
     var downArrowHeight = downArrow.height();
+    var welcomeMessageHeight = welcomeMessage.height();
     var pageTitleHeight = pageTitle.height();
     var footerHeight = footer.height();
 
@@ -25,11 +27,15 @@ $(document).ready(function() {
 
     var dashboardBodyHeight = windowHeight - dashboardNavHeight - dashboardTabsHeight;
 
-
     switch (window.location.pathname) {
         case "/dashboard":
 
-        var mainContentHeight = windowHeight - staticHeights;
+        var bodyIframe = $(".body-iframe");
+        bodyIframe.height(windowHeight/2);
+
+        console.log("Welcome Message Height: " + welcomeMessageHeight);
+
+        var mainContentHeight = windowHeight - staticHeights - welcomeMessageHeight;
 
         break;
 
@@ -45,7 +51,7 @@ $(document).ready(function() {
 
     console.log("Actual Height: " + dashboardBody.height());
     console.log("Main Content Height: " + mainContent.height());
-    console.log("Dashbord Height: " + dashboardBodyHeight);
+    console.log("Dashboard Height: " + dashboardBodyHeight);
 
     // Hides the down arrow
     // if ( dashboardBody.height() > dashboardBodyHeight ) {
@@ -62,8 +68,11 @@ $(document).ready(function() {
 
         switch (window.location.pathname) {
             case "/dashboard":
-    
-            var mainContentHeight = windowHeight - staticHeights;
+
+            var bodyIframe = $(".body-iframe");
+            bodyIframe.height(windowHeight/2);
+
+            var mainContentHeight = windowHeight - staticHeights - welcomeMessageHeight;
     
             break;
     

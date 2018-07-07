@@ -27,7 +27,6 @@ $(document).ready(function() {
             $.post('/register', newUser, function (data) {
                 if (data.code === 304) {
                     alert(data.failed); // Need to set up modal
-                    location.assign('/register');
                 } else {
                     alert("Registration was successful, welcome to MyPainPal!"); // Need to set up modal
                     location.assign('/dashboard');

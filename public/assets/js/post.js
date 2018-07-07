@@ -21,6 +21,8 @@ $(document).ready(function () {
     var femaleDiv = $("#female");
     var maleDiv = $("#male");
     var bodyPartDropdown = $("#bodyPartLabel");
+    var welcomeMessage = $(".welcome-message");
+    var dropDownArrow = $(".down-arrow");
     var humanFemale = new HumanAPI("embedded-human");
     var humanMale = new HumanAPI("embeddedHuman");
     var bodyPart;
@@ -36,19 +38,18 @@ $(document).ready(function () {
         postsContainer.show();
     }
 
-// var userId = 1;
+    // var userId = 1;
 
 
-function keepUserIn(userId){
- $.get("/api/getid/", function (data) {
-    userId = data.user;
-    console.log("we need the users id help:",data.user);
-    getPosts(userId);
-})
-};
+    function keepUserIn(userId){
+        $.get("/api/getid/", function (data) {
+            userId = data.user;
+            console.log("we need the users id help:",data.user);
+            getPosts(userId);
+        })
+    };
 
-keepUserIn();
-
+    keepUserIn();
 
     function getPosts(userId) {
         console.log("hello");
@@ -60,7 +61,8 @@ keepUserIn();
         $.get("/api/dashboard/" + userId, function (data) {
             console.log("these posts are: ", data);
             posts = data;
-            console.log("what is this: ", posts[0].Posts)
+            console.log("what is this: ", posts[0].Posts);
+            var userName = posts[0].first_name;
             var usersPosts = posts[0].Posts;
             console.log("this one is the users posts console: ", usersPosts);
 
@@ -76,13 +78,16 @@ keepUserIn();
                 displayEmptyForm();
                 quickPostDiv.hide();
                 smileyContainer.hide();
+                welcomeMessage.hide();
+                dropDownArrow.hide();
+                $('#body-modal').modal();
             } else {
                 femaleDiv.hide();
                 maleDiv.hide();
                 postsContainer.hide();
                 console.log("else");
                 var userPostsDiv = $("<div>");
-                $(".yesterdays-pain").text("Hello, your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity);
+                $(".yesterdays-pain").html("Hello, <span class='user-name'>" + userName + "</span>!<br class='hide-break' /> Your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity + ".");
                 // $(".yesterdays-pain").append(userPostsDiv);
                 bodyPartDiv.text(usersPosts[usersPosts.length - 1].body_part);
                 quick_body_part.val(usersPosts[usersPosts.length - 1].body_part);
@@ -99,7 +104,6 @@ keepUserIn();
         });
     }
 
-
     $("#post-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
         event.preventDefault();
@@ -115,7 +119,6 @@ keepUserIn();
         console.log(newPost);
         submitPost(newPost);
     });
-
 
     $("#quick-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
@@ -139,7 +142,7 @@ keepUserIn();
             console.log("body part array: ", userMaleArr);
         });
 
-        $("#btn-Save").on("click", function (event) {
+        $("#btn-save-male").on("click", function (event) {
 
             console.log("SAVED: " + bodyPart);
             var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
@@ -151,28 +154,17 @@ keepUserIn();
 
         });
 
-
         var mode = document.getElementById('male');
 
         mode.onClick = function () {
             human.send("scene.pickingMode", "highlight");
         };
 
-        var save = document.getElementById('Save');
-
-        save.onclick = function (pickEvent) {
-            $("#male").hide();
-        };
-
-
-
     };
 
     maleSelect();
 
-
     function femaleSelect() {
-
 
         humanFemale.on("scene.picked",
             function (pickEvent) {
@@ -185,7 +177,8 @@ keepUserIn();
 
             });
 
-        $("#btn-save").on("click", function (event) {
+        $("#btn-save-female").on("click", function(event) {
+            console.log("CLICKED!!!!!!!!!!!!!!!!!!!!");
 
             console.log("SAVED: " + bodyPart);
             var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
@@ -202,18 +195,13 @@ keepUserIn();
 
             human.send("scene.pickingMode", "highlight");
         };
-        var save = document.getElementById('save');
-        //save the current scene, use data in future if needed
-        save.onclick = function (pickEvent) {
-            $("#female").hide();
-        };
     }
 
     femaleSelect();
 
     function submitPost(Post) {
         $.post("/api/dashboard/", Post, function () {
-            window.location.href = "/dashboard";
+            window.location.href = "/journal";
             keepUserIn(userId);
         });
     }

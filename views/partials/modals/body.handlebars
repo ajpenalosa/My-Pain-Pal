@@ -1,0 +1,56 @@
+<!-- Sign Up Modal -->
+<div class="modal fade" id="body-modal" tabindex="-1" role="dialog" aria-labelledby="body-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body text-center">
+
+            <p>Select your body part.</p>
+
+            <div class="select-message-wrapper">
+                <div class="select-message">
+                    <p>Please select a body part.<br />
+                    <a class="close-message">Close message</a></p>
+                </div>
+            </div>
+
+            <div class="female">
+                <div id="female">
+                    <!-- female human body -->
+                    <iframe id="embedded-human" class="body-iframe femaleHuman" frameBorder="0" allowFullScreen="false"
+                        src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=false&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+                    </iframe>
+                    <div class="body-buttons text-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <div id="save-female">
+                            <button id="btn-save-female" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="male">
+                <div id="male">
+                    <!-- male human body -->
+                    <iframe id="embeddedHuman" class="body-iframe maleHuman" frameBorder="0" allowFullScreen="true"
+                        src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
+                    </iframe>
+                    <div class="body-buttons text-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <div id="save-male">
+                            <button id="btn-save-male" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /modal-body -->
+        
+    </div>
+  </div>
+</div>

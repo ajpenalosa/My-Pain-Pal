@@ -22,7 +22,7 @@ html {
 
 body {
     font-family: "Open Sans", 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     color: #FFF;
 }
 
@@ -183,8 +183,8 @@ a.footer-toggle:hover .arrow-right {
     max-height: 120px;
 }
 
-.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in,
-.dashboard-nav .navbar-expand-lg .navbar-nav a.nav-link.log-out {
+.home-nav .navbar .navbar-nav a.nav-link.log-in,
+.dashboard-nav .navbar .navbar-nav a.nav-link.log-out {
     display: inline-block;
     font-weight: 100;
     padding: 10px 20px;
@@ -193,14 +193,20 @@ a.footer-toggle:hover .arrow-right {
     cursor: pointer;
 }
 
-.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:hover,
-.dashboard-nav .navbar-expand-lg .navbar-nav a.nav-link.log-out:hover {
+.dashboard-nav .navbar .navbar-nav a.nav-link.log-out {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.home-nav .navbar .navbar-nav a.nav-link.log-in:hover,
+.dashboard-nav .navbar .navbar-nav a.nav-link.log-out:hover {
     background-color: #FFF;
     color: #000;
 }
 
-.home-nav .navbar-expand-lg .navbar-nav a.nav-link.log-in:active,
-.dashboard-nav .navbar-expand-lg .navbar-nav a.nav-link.log-out:active {
+.home-nav .navbar .navbar-nav a.nav-link.log-in:active,
+.dashboard-nav .navbar .navbar-nav a.nav-link.log-out:active {
     background-color: #2D93C5;
     border-color: #2D93C5;
     color: #FFF;
@@ -470,6 +476,7 @@ input#footer-email {
     color: #FFF;
     border: 0;
     width: calc( 50% - 5px );
+    padding: 15px 0;
 }
 
 .modal .btn-secondary {
@@ -480,6 +487,11 @@ input#footer-email {
     border: 0;
     border-radius: 0;
     width: calc( 50% - 5px );
+    padding: 15px 0;
+}
+
+.modal .btn-primary:hover {
+    background-color: #1c6588;
 }
 
 form .modal-footer>:not(:last-child) {
@@ -502,6 +514,7 @@ input.date-of-birth:before {
 .dashboard-body {
     position: relative;
     background-color: #e1e1e1;
+    color: #1E1E1E;
 }
 
 .main-content {
@@ -509,7 +522,7 @@ input.date-of-birth:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
 .flex-center {
@@ -517,11 +530,102 @@ input.date-of-birth:before {
     padding-bottom: 10px;
 }
 
+/*----- New User -----*/
+
+.body-iframe {
+    width: 100%;
+}
+
+input#body-part {
+    text-transform: capitalize;
+}
+
+.body-buttons #save-male,
+.body-buttons #save-female {
+    display: inline-block;
+    width: calc( 50% - 5px );
+}
+
+.body-buttons #save-male .btn-primary,
+.body-buttons #save-female .btn-primary {
+    width: 100%;
+}
+
+#posts-container .custom-field {
+    border: 0;
+    border-bottom: 3px solid #1c66887e;
+    border-radius: 0;
+    background-color: transparent;
+    padding-left: 0;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+#posts-container .custom-field:focus {
+    box-shadow: 0 0 0 0.2rem rgba(197,96,45,.25);
+    padding-left: 10px;
+}
+
+#posts-container .custom-field::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 0, 0, 0.5);
+    opacity: 1; /* Firefox */
+}
+
+#posts-container .custom-field:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#posts-container .custom-field::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.select-message-wrapper {
+    display: none;
+    position: absolute;
+    width: calc( 100% - 30px );
+}
+
+.select-message {
+    background: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    padding: 15px;
+}
+
+.select-message p {
+    margin-bottom: 0;
+}
+
+.select-message a.close-message {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.select-message a.close-message:hover {
+    text-decoration: underline;
+    color: rgb(247, 83, 1);
+}
+
+/*----- Welcome Message -----*/
+
+.yesterdays-pain {
+    padding: 20px 0 0;
+}
+
+.user-name {
+    text-transform: capitalize;
+}
+
+.hide-break {
+    display: none;
+}
+
 /*----- Quick Log -----*/
 
 .body-part {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 36px;
+    font-size: 22px;
+    line-height: 30px;
     font-weight: 100;
     color: #2D93C5;
     text-transform: uppercase;
@@ -565,6 +669,7 @@ input.date-of-birth:before {
 .quick-log .btn-primary {
     background-color: #2D93C5;
     border-color: #2D93C5;
+    padding: 5px 0;
 }
 
 .quick-log .btn-primary:hover {
@@ -610,7 +715,7 @@ input.date-of-birth:before {
 
 .pain-level {
     color: #000;
-    font-size: 30px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
@@ -728,6 +833,13 @@ input.date-of-birth:before {
 	Media Queries
 --------------------------------------------------------------------------------------------- */
 
+/* Custom media query for quick log page */
+@media (min-width: 400px) {
+    .hide-break {
+        display: inline;
+    }
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
@@ -752,6 +864,12 @@ input.date-of-birth:before {
         padding: 15px 0;
     }
 
+    /*-- Dashboard --*/
+
+    .dashboard-nav .navbar .navbar-nav a.nav-link.log-out {
+        margin-top: 0;
+    }
+
     /*-- Page Title --*/
 
     .page-title h1 {
@@ -761,8 +879,21 @@ input.date-of-birth:before {
 
     /*-- Quick Log --*/
 
+    .body-part {
+        font-size: 30px;
+        line-height: 45px;
+    }
+
     .smiley {
         font-size: 50px;
+    }
+
+    .pain-level {
+        font-size: 30px;
+    }
+
+    .quick-log .btn-primary {
+        padding: 10px 0;
     }
 
     /*-- Journal --*/
@@ -857,6 +988,12 @@ input.date-of-birth:before {
     }
 
     /*-- Quick Log --*/
+
+    .body-part {
+        font-size: 36px;
+        line-height: 54px;
+    }
+
     .smiley {
         font-size: 60px;
     }
