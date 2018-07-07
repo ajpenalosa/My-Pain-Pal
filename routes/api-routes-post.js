@@ -111,4 +111,39 @@ module.exports = function (app) {
             });
     });
 
+
+    app.delete("/api/journal/:id", function (req, res) {
+
+        db.Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbTodo) {
+            res.json(dbTodo);
+        });
+
+    });
+
+
+    app.put("/api/journal", function (req, res) {
+
+        db.Post.update({
+            body_part: req.body.body_part,
+            pain_intensity: req.body.pain_intensity,
+            pain_characteristics: req.body.pain_characteristics,
+            pain_duration: req.body.pain_duration,
+            medications: req.body.medications,
+            dosage: req.body.dosage,
+            notes: req.body.notes,
+            UserId: req.session.user
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbTodo) {
+            res.json(dbTodo);
+        });
+    });
+    
+
 };
