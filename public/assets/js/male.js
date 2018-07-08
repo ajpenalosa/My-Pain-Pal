@@ -20,7 +20,7 @@ $(document).ready(function() {
         console.log("body part array: ", userMaleArr);
     });
 
-    $("#btn-Save").on("click", function (event) {
+    $("#btn-save-male").on("click", function (event) {
         console.log("SAVED: " + bodyPart);
         $("#body-part").append(bodyPart);
     });
@@ -33,11 +33,21 @@ $(document).ready(function() {
         human.send("scene.pickingMode", "highlight");
     };
 
-    var save = document.getElementById('Save');
+    var save = document.getElementById('save-male');
 
     save.onclick = function (pickEvent) {
 
-        $("#male").hide();
+        if (bodyPart) {
+              console.log("Body part selected");
+              $("#body-modal").modal("hide");
+        }
+        else {
+            console.log("No body part selected");
+            $(".select-message-wrapper").show();
+            $(".close-message").on("click", function() {
+                $(".select-message-wrapper").hide();
+            })
+        }
 
         objectId.push(bodyPart);
 

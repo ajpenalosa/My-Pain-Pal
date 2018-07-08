@@ -22,7 +22,7 @@ human.on("scene.picked",
        
     });
 
-$("#btn-save").on("click", function(event) {
+$("#btn-save-female").on("click", function(event) {
     console.log("SAVE: " + bodyPart);
     $("#body-part").append(bodyPart);
 });
@@ -35,10 +35,21 @@ mode.onClick = function () {
 
         human.send("scene.pickingMode", "highlight");
     };
-var save = document.getElementById('save');
+var save = document.getElementById('save-female');
 //save the current scene, use data in future if needed
 save.onclick = function (pickEvent) {    
-    $("#female").hide();
+
+    if (bodyPart) {
+          console.log("Body part selected");
+          $("#body-modal").modal("hide");
+    }
+    else {
+        console.log("No body part selected");
+        $(".select-message-wrapper").show();
+        $(".close-message").on("click", function() {
+            $(".select-message-wrapper").hide();
+        })
+    }
 
     objectID.push(bodyPart);
 

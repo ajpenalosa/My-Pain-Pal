@@ -3,6 +3,17 @@
 
 <div class="dashboard-body">
 
+    <div class="welcome-message text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="yesterdays-pain">Hello there!<br class='hide-break' />
+                    Your last pain intensity level was 0.</div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /welcome-message -->
+
     <div class="main-content">
 
         <div class="flex-center quick-log">
@@ -11,36 +22,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="hidden" class="form-control" id="quick-body-part">
-                        <div class="body-part text-center">
-                         
-                                    {{!-- Right Arm --}}
-
-                        </div>
-                        <div class="yesterdays-pain"></div>
-                        <div class="female">
-                            <div id="female">
-                                <!-- female human body -->
-                                <iframe id="embedded-human" class="femaleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="false"
-                                    src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=false&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
-                                </iframe>
-                                <div id="save">
-                                    <button id="btn-save" href="#">Save</button>
-                                </div>
-                                <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
-                            </div>
-                        </div>
-                        <div class="male">
-                            <div id="male">
-                                <!-- male human body -->
-                                <iframe id="embeddedHuman" class="maleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="true"
-                                    src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
-                                </iframe>
-                                <div id="Save">
-                                    <button id="btn-Save" href="#">Save</button>
-                                </div>
-                                <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
-                            </div>
-                        </div>
+                        <div class="body-part text-center"></div>
                         <div class="smiley-container clear existing-smiley">
                             <div class="smiley">
                                 <i class="far fa-laugh"></i>
@@ -88,63 +70,69 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <form>
+                            <!-- New User -->
                             <div id="posts-container">
+
                                 <div class="form-group">
-                                    <div class="smiley-container clear">
-                                        <div class="smiley">
-                                            <i class="far fa-laugh"></i>
-                                        </div>
-                                        <!-- /smiley -->
-                                        <div class="smiley">
-                                            <i class="far fa-smile"></i>
-                                        </div>
-                                        <!-- /smiley -->
-                                        <div class="smiley">
-                                            <i class="far fa-meh"></i>
-                                        </div>
-                                        <!-- /smiley -->
-                                        <div class="smiley">
-                                            <i class="far fa-frown"></i>
-                                        </div>
-                                        <!-- /smiley -->
-                                        <div class="smiley">
-                                            <i class="far fa-sad-cry"></i>
-                                        </div>
-                                        <!-- /smiley -->
+                                    <button id="btn-body-select" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#body-modal">
+                                        Select Body Part
+                                    </button>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control custom-field" id="body-part" placeholder="Body Part" required>
+                                </div>
+                                <div class="smiley-container clear">
+                                    <div class="smiley">
+                                        <i class="far fa-laugh"></i>
                                     </div>
+                                    <!-- /smiley -->
+                                    <div class="smiley">
+                                        <i class="far fa-smile"></i>
+                                    </div>
+                                    <!-- /smiley -->
+                                    <div class="smiley">
+                                        <i class="far fa-meh"></i>
+                                    </div>
+                                    <!-- /smiley -->
+                                    <div class="smiley">
+                                        <i class="far fa-frown"></i>
+                                    </div>
+                                    <!-- /smiley -->
+                                    <div class="smiley">
+                                        <i class="far fa-sad-cry"></i>
+                                    </div>
+                                    <!-- /smiley -->
+                                </div>
+                                <div class="form-group">
                                     <input type="range" min="0" max="10" value="5" class="form-control-range slider" id="new-pain-level-range">
-                                    <label for="pain-intensity">Pain Intensity:
-                                        <span id="new-pain-value"></span>
-                                    </label>
-                                    <label for="body-part">Body Part:</label>
-                                    <input type="text" class="form-control" id="body-part">
-                                    <div class="form-group">
-                                        <label for="pain-char">Select Pain Characteristics:</label>
-                                        <select class="custom-select" id="pain-char">
-                                            <option value="sharp">Sharp</option>
-                                            <option value="dull">Dull</option>
-                                            <option value="stabbing">Stabbing</option>
-                                            <option value="throbbing">Throbbing</option>
-                                            <option value="aching">Aching</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pain-duration">Pain Duration:</label>
-                                        <input type="text" class="form-control" id="pain-duration">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="medications">Medications:</label>
-                                        <input type="text" class="form-control" id="medications">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="dosage">Dosage:</label>
-                                        <input type="text" class="form-control" id="dosage">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="notes">Notes:</label>
-                                        <textarea class="form-control" rows="10" id="notes"></textarea>
-                                    </div>
+                                </div>
+                                <div class="pain-level text-center">
+                                    Pain Intensity:
+                                    <span id="new-pain-value"></span>
+                                </div>
+                                <div class="form-group">
+                                    <select class="custom-select custom-field" id="pain-char">
+                                        <option value="None">Select Pain Characteristic</option>
+                                        <option value="Sharp">Sharp</option>
+                                        <option value="Dull">Dull</option>
+                                        <option value="Stabbing">Stabbing</option>
+                                        <option value="Throbbing">Throbbing</option>
+                                        <option value="Aching">Aching</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control custom-field" id="pain-duration" placeholder="Pain Duration">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control custom-field" id="medications" placeholder="Medications">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control custom-field" id="dosage" placeholder="Dosage">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control custom-field" rows="3" id="notes" placeholder="Notes"></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-block btn-primary" id="post-submit">Submit</button>
@@ -167,6 +155,8 @@
 </div>
 <!-- /dashboard-body -->
 
+{{> modals/body}}
+
 {{> footer}}
 
 <!-- Optional JavaScript -->
@@ -179,6 +169,7 @@
     crossorigin="anonymous"></script>
 
 <!-- JavaScript -->
+<script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
 <script type="text/JavaScript" src="./assets/js/javascript.js"></script>
 <script type="text/JavaScript" src="./assets/js/dashboard.js"></script>
 <script type="text/JavaScript" src="./assets/js/responsive-heights.js"></script>
