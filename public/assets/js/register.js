@@ -22,7 +22,7 @@ $(document).ready(function() {
             gender: gndr.val()
         };
 
-        if (newUser.first_name === "" || newUser.last_name === "" || newUser.email === "" || newUser.password === "" || newUser.dob === "" || newUser.gender === "") {
+        if (!newUser.first_name || !newUser.last_name || !newUser.email || !newUser.password || !newUser.dob || !newUser.gender) {
             alert("Please complete all fields before submitting!");
         } else {
             $.post('/register', newUser, function (data) {
