@@ -160,7 +160,9 @@ $(document).ready(function () {
                     "</div>" +
                 "</div>";
 
-                postJournal.html(postHTML);
+                console.log(posts.Posts[i].id);
+
+                postJournal.html(postHTML).data("post", posts.Posts[i]);
 
                 journalContainer.prepend(postJournal);
             }
