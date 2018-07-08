@@ -11,11 +11,11 @@ canvas.fillStyle = gradient;
 canvas.fillRect(0, 0, 1, 1);
 
 function keepUserIn(userId){
- $.get("/api/getid/", function (data) {
-    userId = data.user;
-    console.log("we need the users id help:",data.user);
-    getChartStats(userId);
-})
+    $.get("/api/getid/", function (data) {
+        userId = data.user;
+        console.log("we need the users id help:",data.user);
+        getChartStats(userId);
+    })
 };
 
 keepUserIn();
@@ -38,11 +38,10 @@ function getChartStats(userId) {
         var chartArr = [0, 0, 0, 0, 0, 0, 0]
 
         for (var i = 0; i < usersPosts.length; i++) {
-            var painIntensity = usersPosts[i].pain_intensity
+            var painIntensity = usersPosts[i].pain_intensity;
             var createdAt = moment(usersPosts[i].createdAt).format("dddd");
             console.log("user post: " + usersPosts[i].pain_intensity);
             console.log("day of the week " + createdAt);
-
 
             switch(createdAt) {
                 case 'Sunday': 
@@ -63,7 +62,7 @@ function getChartStats(userId) {
                 case 'Friday':
                     chartArr[5] = painIntensity;
                     break;
-                case 'Satday':
+                case 'Saturday':
                     chartArr[6] = painIntensity;
                     break;
             }
@@ -95,7 +94,7 @@ function getChartStats(userId) {
             options: {
                 responsive: true,
                 title: {
-                    display: true,
+                    display: false,
                     text: 'My Pain Level Chart'
                 },
                 tooltips: {
@@ -130,7 +129,7 @@ function getChartStats(userId) {
             }
         });
 
-});
+    });
 
 }
 
