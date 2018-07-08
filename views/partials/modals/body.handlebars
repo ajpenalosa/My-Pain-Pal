@@ -11,16 +11,20 @@
 
         <div class="modal-body text-center">
 
-            <p>Select your body part.</p>
+            <p>Select your body part</p>
 
             <div class="select-message-wrapper">
                 <div class="select-message">
-                    <p>Please select a body part.<br />
+                    <p>Please select a body part<br />
+                    <a class="close-message">Close message</a></p>
+                </div>
+                <div class="body-loading">
+                    <p>Body is still loading<br />
                     <a class="close-message">Close message</a></p>
                 </div>
             </div>
 
-            <div class="female">
+            <div id="female-div" class="female">
                 <div id="female">
                     <!-- female human body -->
                     <iframe id="embedded-human" class="body-iframe femaleHuman" frameBorder="0" allowFullScreen="false"
@@ -34,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="male">
+            <div id="male-div" class="male">
                 <div id="male">
                     <!-- male human body -->
                     <iframe id="embeddedHuman" class="body-iframe maleHuman" frameBorder="0" allowFullScreen="true"

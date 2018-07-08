@@ -33,9 +33,14 @@ $(document).ready(function() {
         var bodyIframe = $(".body-iframe");
         bodyIframe.height(windowHeight/2);
 
-        console.log("Welcome Message Height: " + welcomeMessageHeight);
-
         var mainContentHeight = windowHeight - staticHeights - welcomeMessageHeight;
+
+        break;
+
+        case "/add-new":
+
+        var bodyIframe = $(".body-iframe");
+        bodyIframe.height(windowHeight/2);
 
         break;
 
@@ -53,11 +58,6 @@ $(document).ready(function() {
     console.log("Main Content Height: " + mainContent.height());
     console.log("Dashboard Height: " + dashboardBodyHeight);
 
-    // Hides the down arrow
-    // if ( dashboardBody.height() > dashboardBodyHeight ) {
-    //     downArrow.hide();
-    // }
-
     // Resizes heights on window resize
     // =============================================================
     $(window).on('resize', function (){
@@ -73,6 +73,13 @@ $(document).ready(function() {
             bodyIframe.height(windowHeight/2);
 
             var mainContentHeight = windowHeight - staticHeights - welcomeMessageHeight;
+    
+            break;
+
+            case "/add-new":
+    
+            var bodyIframe = $(".body-iframe");
+            bodyIframe.height(windowHeight/2);
     
             break;
     

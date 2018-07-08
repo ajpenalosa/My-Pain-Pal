@@ -23,8 +23,6 @@ $(document).ready(function () {
     female_div.hide();
     male_div.hide();
 
-
-
     var postSlider = document.getElementById("post-pain-level-range");
     var postOutput = document.getElementById("post-pain-value");
     postOutput.innerHTML = postSlider.value;
@@ -33,7 +31,6 @@ $(document).ready(function () {
         console.log("slider works");
         postOutput.innerHTML = this.value;
     }
-
 
     function keepUserIn(userId) {
         $.get("/api/getid/", function (data) {
@@ -44,10 +41,6 @@ $(document).ready(function () {
     }
 
     keepUserIn();
-
-
-
-
     function getPosts(userId) {
         console.log("hello");
         var userIdString = userId || "";
@@ -61,6 +54,9 @@ $(document).ready(function () {
             console.log("what is this: ", posts[0].Posts)
             var usersPosts = posts[0].Posts;
             console.log("this one is the users posts console: ", usersPosts);
+            
+            // Triggers the modal
+            $('#body-modal').modal();
 
             if (posts[0].gender === "Female") {
                 female_div.show();
@@ -70,11 +66,6 @@ $(document).ready(function () {
 
         });
     }
-
-
-
-
-
 
     $("#journal-post-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
@@ -87,13 +78,10 @@ $(document).ready(function () {
             medications: medications.val().trim(),
             dosage: dosage.val().trim(),
             notes: notes.val().trim(),
-
         }
         console.log(newPost);
         submitPost(newPost);
     });
-
-
 
     function maleSelect() {
 
@@ -106,7 +94,7 @@ $(document).ready(function () {
             console.log("body part array: ", userMaleArr);
         });
 
-        $("#btn-Save").on("click", function (event) {
+        $("#btn-save-male").on("click", function (event) {
 
             console.log("SAVED: " + bodyPart);
             var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
@@ -119,30 +107,17 @@ $(document).ready(function () {
 
         });
 
-
         var mode = document.getElementById('male');
 
         mode.onClick = function () {
             human.send("scene.pickingMode", "highlight");
         };
 
-        var save = document.getElementById('Save');
-
-        save.onclick = function (pickEvent) {
-            $("#male").hide();
-            keepUserIn(userId);
-
-        };
-
-
-
     };
 
     maleSelect();
 
-
     function femaleSelect() {
-
 
         humanFemale.on("scene.picked",
             function (pickEvent) {
@@ -155,7 +130,7 @@ $(document).ready(function () {
 
             });
 
-        $("#btn-save").on("click", function (event) {
+        $("#btn-save-female").on("click", function (event) {
 
             console.log("SAVED: " + bodyPart);
             var newBodyPart = bodyPart.replace(/_/g, " ").replace("ID", "").split("-");
@@ -170,20 +145,11 @@ $(document).ready(function () {
         var mode = document.getElementById('female');
 
         mode.onClick = function () {
-
             human.send("scene.pickingMode", "highlight");
-        };
-        var save = document.getElementById('save');
-        //save the current scene, use data in future if needed
-        save.onclick = function (pickEvent) {
-            $("#female").hide();
-            keepUserIn(userId);
         };
     }
 
     femaleSelect();
-
-
 
     function submitPost(Post) {
         $.post("/api/dashboard/", Post, function () {
@@ -192,6 +158,5 @@ $(document).ready(function () {
         });
          keepUserIn(userId);
     }
-
 
 });

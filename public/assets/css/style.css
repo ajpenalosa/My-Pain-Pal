@@ -551,31 +551,43 @@ input#body-part {
     width: 100%;
 }
 
+@keyframes color {
+  0% {
+    background-color: rgba(247, 83, 1, 0.2);
+  }
+  50% {
+    background-color: rgba(247, 83, 1, 1);
+  }
+  100% {
+    background-color: rgba(247, 83, 1, 0.2);
+  }
+}
+
 .select-message-wrapper {
     display: none;
     position: absolute;
     width: calc( 100% - 30px );
-}
-
-.select-message {
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(247, 83, 1, 0.2);
     color: #FFF;
     padding: 15px;
+    animation-name: color;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
-.select-message p {
+.select-message-wrapper p {
     margin-bottom: 0;
 }
 
-.select-message a.close-message {
+.select-message-wrapper a.close-message {
     text-decoration: underline;
     cursor: pointer;
     font-size: 16px;
 }
 
-.select-message a.close-message:hover {
+.select-message-wrapper a.close-message:hover {
     text-decoration: underline;
-    color: rgb(247, 83, 1);
+    color: #1c6588;
 }
 
 /*----- Welcome Message -----*/
