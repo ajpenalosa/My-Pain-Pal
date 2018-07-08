@@ -64,6 +64,18 @@ module.exports = function (app) {
             res.json(dbPost);
         });
     });
+    
+
+    app.get("/api/body/:id", function (req, res) {
+        db.User.findAll({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Post]
+        }).then(function (dbPost) {
+            res.json(dbPost);
+        });
+    });
 
 
     app.post("/api/dashboard", function (req, res) {
