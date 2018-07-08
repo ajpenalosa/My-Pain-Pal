@@ -3,6 +3,9 @@ $(document).ready(function () {
     var female_div = $("#female");
     var male_div = $("#male");
 
+    female_div.hide();
+    male_div.hide();
+
     function keepUserIn(userId) {
         $.get("/api/getid/", function (data) {
             userId = data.user;

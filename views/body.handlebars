@@ -20,8 +20,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <button id="female-btn">female</button>
-                        <button id="male-btn">male</button>
+                        {{!-- <button id="female-btn">female</button>
+                        <button id="male-btn">male</button> --}}
                         
                         <br>
                         
@@ -30,9 +30,9 @@
                             <iframe id="embedded-human" class="femaleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="false"
                                 src="https://human.biodigital.com/widget/?be=2aDe&background.colors=204,202,202,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=false&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
                             </iframe>
-                            <div id="save">
+                            {{!-- <div id="save">
                                 <button id="btn-save" href="#">Save</button>
-                            </div>
+                            </div> --}}
                             <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
                         </div>
                         
@@ -41,9 +41,9 @@
                             <iframe id="embeddedHuman" class="maleHuman" frameBorder="0" style="width: 100%; max-width: 980px;" height="600" allowFullScreen="true"
                                 src="https://human.biodigital.com/widget/?be=2aDs&background.colors=181,177,177,1,245,245,245,1&background.gradient-type=linear&initial.hand-hint=true&ui-annotations=true&ui-info=true&ui-dissect=true&ui-isolate=true&ui-share=false&ui-tools-display=primary&dk=e84823bf8df7a40d8cf4b3a7d3272eaac8e76074">
                             </iframe>
-                            <div id="Save">
+                            {{!-- <div id="Save">
                                 <button id="btn-Save" href="#">Save</button>
-                            </div>
+                            </div> --}}
                             <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
                         </div>
 
@@ -63,7 +63,7 @@
 {{> footer}}
 
 <script>
-    $(document).ready(function () {
+   /* $(document).ready(function () {
         $("#male").hide();
         $("#female").hide();
         var selected;
@@ -84,7 +84,7 @@
             }
 
         });
-    });
+    });*/
 
     
 </script>
