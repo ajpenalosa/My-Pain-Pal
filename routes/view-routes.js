@@ -6,7 +6,7 @@
 // =============================================================
 const path = require("path");
 const router = require('express').Router();
-// const db = require("../models");
+const db = require("../models");
 
 // Routes
 // =============================================================
@@ -28,33 +28,104 @@ router.get("/login", function (req, res) {
 
 // Dashboard
 router.get("/dashboard", function (req, res) {
-    console.log("req session on view", req.session)
-    res.render('dashboard');
+    if (req.session.user) {
+        res.render('dashboard');
+    } else if (req.cookie) {
+        db.User.findOne({
+            where: {
+                token: req.session.user.token
+            }
+        }).then(function(result) {
+            req.session.user = result.id
+        });
+    } else {
+        res.redirect('/');
+    };
 });
 
 // Add New
 router.get("/add-new", function (req, res) {
-    res.render('post');
+    if (req.session.user) {
+        res.render('post');
+    } else if (req.cookie) {
+        db.User.findOne({
+            where: {
+                token: req.session.user.token
+            }
+        }).then(function (result) {
+            req.session.user = result.id
+        });
+    } else {
+        res.redirect('/');
+    };
 });
 
 // Journal
 router.get("/journal", function (req, res) {
-    res.render('journal');
+    if (req.session.user) {
+        res.render('journal');
+    } else if (req.cookie) {
+        db.User.findOne({
+            where: {
+                token: req.session.user.token
+            }
+        }).then(function (result) {
+            req.session.user = result.id
+        });
+    } else {
+        res.redirect('/');
+    };
 });
 
 // Chart
 router.get("/chart", function (req, res) {
-    res.render('chart');
+    if (req.session.user) {
+        res.render('chart');
+    } else if (req.cookie) {
+        db.User.findOne({
+            where: {
+                token: req.session.user.token
+            }
+        }).then(function (result) {
+            req.session.user = result.id
+        });
+    } else {
+        res.redirect('/');
+    };
 });
 
 // Calendar
 router.get("/calendar", function (req, res) {
-    res.render('calendar');
+    if (req.session.user) {
+        res.render('calendar');
+    } else if (req.cookie) {
+        db.User.findOne({
+            where: {
+                token: req.session.user.token
+            }
+        }).then(function (result) {
+            req.session.user = result.id
+        });
+    } else {
+        res.redirect('/');
+    };
 });
 
 // Body
 router.get("/body", function (req, res) {
-    res.render('body');
+    if (req.session.user) {
+        res.render('body');
+    } else if (req.cookie) {
+        db.User.findOne({
+            where: {
+                token: req.session.user.token
+            }
+        }).then(function (result) {
+            req.session.user = result.id
+        });
+    } else {
+        res.redirect('/');
+    };
 });
 
 

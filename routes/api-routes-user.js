@@ -6,17 +6,17 @@ module.exports = function(app) {
 
     app.get("/api/getid/", function (req,res){
         res.send(req.session);
-    })
+    });
 
     app.post('/register', function (req, res) {
-        let token = randtoken.generate(10);
-
         db.User.findOne({
             where: {
                 email: req.body.email
             }
         }).then(function(result) {
-            if (!result) {
+            let token = randtoken.generate(16);
+
+            if (!result || result.email !== req.body.email) {
                 let encryptPw = encrypt.encrypt(req.body.password);
 
                 db.User.create({
@@ -34,8 +34,7 @@ module.exports = function(app) {
                 });
             } else {
                 res.send({
-                    "code": 304,
-                    "failed": "Email address is in use! Please revise your input."
+                    "code": 304
                 });
             };
         });
@@ -47,156 +46,41 @@ module.exports = function(app) {
                 email: req.body.email
             }
         }).then(function(result) {
-            let token = randtoken.generate(10);
-            let dbPassword = result.password;
-            let decryptPw = encrypt.decrypt(dbPassword);
-
-            if (result.email === req.body.email && decryptPw === req.body.password) {
-                db.User.update({ token: token }, {
-                    where: {
-                        email: req.body.email
-                    }
-                }).then(function (data) {
-                    if (!data) {
-                        res.send("Log-in failure!");
-                    } else {
-                        res.cookie("token", token);
-                        req.session.user = result.id;
-                        res.send("Log-in success!");
-                    };
-                }).catch(function (error) {
-                    res.send(error);
+            if (!result) {
+                res.send({
+                    "code": 505
                 });
             } else {
-                res.send({
-                    "code": 504,
-                    "failed": "Account not found! Please revise your credentials."
-                });
+                let token = randtoken.generate(16);
+                let dbPassword = result.password;
+                let decryptPw = encrypt.decrypt(dbPassword);
+
+                if (result.email === req.body.email && decryptPw === req.body.password) {
+                    db.User.update({ token: token }, {
+                        where: {
+                            email: req.body.email
+                        }
+                    }).then(function (data) {
+                        if (!data) {
+                            res.send("Log-in failure!");
+                        } else {
+                            res.cookie("token", token);
+                            req.session.user = result.id;
+                            res.send("Log-in success!");
+                        };
+                    }).catch(function (error) {
+                        res.send(error);
+                    });
+                } else {
+                    res.send({
+                        "code": 504
+                    });
+                };
             };
         });
     });
 
-    app.get('/', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/body', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/calendar', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/chart', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/dashboard', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/index', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/journal', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/post', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/add-new', (req, res) => {
-        if (req.session.user) {
-            res.send(`${req.session.user.first_name} is currently logged in.`);
-        } else {
-            return res.redirect('/');
-        };
-    });
-
-    app.get('/', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-    
-    app.get('/body', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/calendar', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/chart', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/dashboard', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/index', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/journal', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/post', (req, res) => {
-        res.clearCookie("token");
-        req.session.destroy();
-        res.end();
-    });
-
-    app.get('/add-new', (req, res) => {
+    app.get('/logout', (req, res) => {
         res.clearCookie("token");
         req.session.destroy();
         res.end();
