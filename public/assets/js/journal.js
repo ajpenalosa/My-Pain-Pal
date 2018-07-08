@@ -9,6 +9,7 @@ $(document).ready(function () {
     var dosage = $(".painDos");
     var notes = $(".painNotes");
     var userId;
+    var postJournal;
 
 
 
@@ -16,6 +17,7 @@ $(document).ready(function () {
         userId = data.user;
         console.log("we need the users id help:", data.user);
         getJournalPosts(userId);
+        deletePost(userId);
     })
 
 
@@ -160,19 +162,66 @@ $(document).ready(function () {
                     "</div>" +
                 "</div>";
 
-                postJournal.html(postHTML);
+                
+                postJournal.html(postHTML).data("post", posts.Posts[i]);
 
                 journalContainer.prepend(postJournal);
             }
         });
 
-        $(document).on("click", "#edit", function(event){
-            console.log("clicked");
-        });
-
-
     }
 
+    $(document).on("click", "#edit", function (event) {
+        console.log("clicked");
+    });
 
+    function handlePostEdit() {
+        var currentPost = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .data("post");
+        window.location.href = "/"
+    }
+
+    // id, where to edit and where to update to replace original (id of record & new info)
+
+    // $(document).on("click", "#delete", function (event) {
+    //     console.log("DELETE CLICK");
+    //     console.log(id);
+    // });
+
+    $(document).on("click", "#delete", handlePostDelete);
+    // console.log("DELETE CLICK");
+    // console.log(userId.id)
+
+    function deletePost(id) {
+        $.ajax({
+            method: "DELETE",
+            url: "/api/journal/" + id
+        }).then(function () {
+            console.log("YOOOOO")
+            console.log("id " + posts.id);
+
+            $.get("/api/getid/", function (data) {
+                userId = data.user;
+                getJournalPosts(userId);
+            })
+        });
+    }
+
+    function handlePostDelete() {
+        var currentPost = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .data("post");
+        console.log("current ", currentPost.id)
+        deletePost(currentPost.id);
+    }
 
 });
