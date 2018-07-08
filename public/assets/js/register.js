@@ -8,27 +8,35 @@ $(document).ready(function() {
     var pWord = $("#password");
     var bday = $("#dob");
     var gndr = $("#gender");
+    var registerHelp = $("#registerHelp");
 
     register.on("submit", function handleFormSubmit(event) {
         event.preventDefault();
 
-        if (fName.val() === "" || lName.val() === "" || emAddr.val() === "" || pWord.val() === "" || bday.val() === "") {
+        var newUser = {
+            first_name: fName.val().trim(),
+            last_name: lName.val().trim(),
+            email: emAddr.val().trim(),
+            password: pWord.val().trim(),
+            dob: bday.val(),
+            gender: gndr.val()
+        };
+
+        if (newUser.first_name === "" || newUser.last_name === "" || newUser.email === "" || newUser.password === "" || newUser.dob === "" || newUser.gender === "") {
             alert("Please complete all fields before submitting!");
         } else {
-            var newUser = {
-                first_name: fName.val().trim(),
-                last_name: lName.val().trim(),
-                email: emAddr.val().trim(),
-                password: pWord.val().trim(),
-                dob: bday.val(),
-                gender: gndr.val()
-            };
-
             $.post('/register', newUser, function (data) {
                 if (data.code === 304) {
-                    alert(data.failed); // Need to set up modal
+                    registerHelp.html("Email address is in use! Please revise your input.");
+                    
+                    registerHelp.css(
+                        {
+                            "visibility": "visible",
+                            "font-style": "italic",
+                            "font-weight": "bold"
+                        }
+                    );
                 } else {
-                    alert("Registration was successful, welcome to MyPainPal!"); // Need to set up modal
                     location.assign('/dashboard');
                 };
             });          
