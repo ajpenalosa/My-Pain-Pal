@@ -22,7 +22,7 @@ $(document).ready(function() {
             gender: gndr.val()
         };
 
-        if (!newUser.first_name || !newUser.last_name || !newUser.email || !newUser.password || !newUser.dob || !newUser.gender) {
+        if (!fName.val() || !lName.val() || !emAddr.val() || !pWord.val() || !bday.val() || !gndr.val()) {
             registerHelp.html("Please fill out all fields before submitting!");
 
             registerHelp.css(
