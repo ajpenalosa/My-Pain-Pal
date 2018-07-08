@@ -17,7 +17,6 @@ $(document).ready(function () {
         userId = data.user;
         console.log("we need the users id help:", data.user);
         getJournalPosts(userId);
-        deletePost(userId);
     })
 
 
@@ -30,6 +29,7 @@ $(document).ready(function () {
             userIdString = "/id/" + userIdString;
         }
         $.get("/api/journal/" + userId, function (data) {
+            journalContainer.empty();
             console.log("posts: ", data);
             posts = data;
             for (var i = 0; i < posts.Posts.length; i++) {
