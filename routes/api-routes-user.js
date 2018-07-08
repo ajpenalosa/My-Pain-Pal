@@ -4,6 +4,17 @@ const encrypt = require("./crypt/encryption.js");
 
 module.exports = function(app) {
 
+    app.get("/api/users/:id", function (req, res) {
+        db.User.findOne({
+                where: {
+                    id: req.params.id
+                },
+            attributes: ["first_name", "last_name", "email", "gender"]
+        }).then(function (dbUser) {
+            res.json(dbUser);
+        });
+    });
+
     app.get("/api/getid/", function (req,res){
         res.send(req.session);
     })

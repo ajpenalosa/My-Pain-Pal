@@ -87,8 +87,7 @@ $(document).ready(function () {
                 postsContainer.hide();
                 console.log("else");
                 var userPostsDiv = $("<div>");
-                $(".yesterdays-pain").html("Hello, <span class='user-name'>" + userName + "</span>!<br class='hide-break' /> Your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity + ".");
-                // $(".yesterdays-pain").append(userPostsDiv);
+                $(".previous-pain").html("Your last pain intensity level was " + usersPosts[usersPosts.length - 1].pain_intensity + ".");
                 bodyPartDiv.text(usersPosts[usersPosts.length - 1].body_part);
                 quick_body_part.val(usersPosts[usersPosts.length - 1].body_part);
                 quickPostDiv.show();

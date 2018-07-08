@@ -214,6 +214,12 @@ a.footer-toggle:hover .arrow-right {
 
 /*----- Dashboard -----*/
 
+.navbar-text {
+    width: 100%;
+    padding: 16px 30px;
+    font-size: 18px;
+}
+
 .dashboard-nav {
     background: #000;
 }
@@ -592,16 +598,13 @@ input#body-part {
 
 /*----- Welcome Message -----*/
 
-.yesterdays-pain {
+.previous-pain {
     padding: 20px 0 0;
+    font-size: 16px;
 }
 
 .user-name {
     text-transform: capitalize;
-}
-
-.hide-break {
-    display: none;
 }
 
 /*----- Quick Log -----*/
@@ -849,13 +852,6 @@ input#body-part {
 	Media Queries
 --------------------------------------------------------------------------------------------- */
 
-/* Custom media query for quick log page */
-@media (min-width: 400px) {
-    .hide-break {
-        display: inline;
-    }
-}
-
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
@@ -884,6 +880,12 @@ input#body-part {
 
     .dashboard-nav .navbar .navbar-nav a.nav-link.log-out {
         margin-top: 0;
+    }
+
+    /*-- Welcome --*/
+
+    .previous-pain {
+        font-size: 20px;
     }
 
     /*-- Page Title --*/
