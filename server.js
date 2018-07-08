@@ -23,6 +23,9 @@ var PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Static directory
+app.use(express.static("public"));
+
 // Session
 app.use(session({
     secret: "whateverwewant",
@@ -30,9 +33,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: "auto", maxAge: null }
 }));
-
-// Static directory
-app.use(express.static("public"));
 
 // Setup Handlebars
 var exphbs = require("express-handlebars");
