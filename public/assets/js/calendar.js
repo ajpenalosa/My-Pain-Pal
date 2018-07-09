@@ -44,33 +44,61 @@ $(document).ready(function () {
                 calendarEvents.push(calendarObj);
             }
 
+            var windowWidth = $(window).width();
+            var calendarView = "month";
 
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                defaultDate: moment(new Date()).format("YYYY-MM-DD"),
-                navLinks: true, // can click day/week names to navigate views
-                selectable: false,
-                selectHelper: true,
-                select: function (start, end) {
-                    var title = prompt('Event Title:');
-                    var eventData;
-                    if (title) {
-                        eventData = {
-                            title: title,
-                            start: start,
-                            end: end
-                        };
-                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                    }
-                    $('#calendar').fullCalendar('unselect');
-                },
-                editable: true,
-                eventLimit: true, // allow "more" link when too many events
-                events: calendarEvents
+            function generateCalendar() {
+                $('#calendar').fullCalendar({
+                    defaultView: calendarView,
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    defaultDate: moment(new Date()).format("YYYY-MM-DD"),
+                    navLinks: true, // can click day/week names to navigate views
+                    selectable: false,
+                    selectHelper: true,
+                    select: function (start, end) {
+                        var title = prompt('Event Title:');
+                        var eventData;
+                        if (title) {
+                            eventData = {
+                                title: title,
+                                start: start,
+                                end: end
+                            };
+                            $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                        }
+                        $('#calendar').fullCalendar('unselect');
+                    },
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: calendarEvents
+                });
+            };
+
+            if (windowWidth < 767) {
+                calendarView = "listWeek";
+                generateCalendar();
+            }
+            else  {
+                calendarView = "month";
+                generateCalendar();
+            }
+
+            $(window).on('resize', function (){
+
+                windowWidth = $(window).width();
+
+                if (windowWidth < 767) {
+                    calendarView = "listWeek";
+                    generateCalendar();
+                }
+                else  {
+                    calendarView = "month";
+                    generateCalendar();
+                }
             });
 
         })

@@ -857,6 +857,55 @@ input#body-part {
 }
 
 /* -----------------------------------
+	Calendar
+--------------------------------------------------------------------------------------------- */
+
+.fc-event {
+    background: #2D93C5 !important;
+    color: #FFF;
+    border-radius: 0 !important;
+    padding: 5px !important;
+    border: 0 !important;
+}
+
+.fc-title {
+    color: #FFF;
+    text-transform: capitalize;
+}
+
+/* Responsive Layout */
+
+.fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0;
+}
+
+#calendar h2 {
+    color: #4A4A4A;
+    font-size: 18px;
+}
+
+.fc-toolbar .fc-left,
+.fc-toolbar .fc-right,
+.fc-toolbar .fc-right .fc-button-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.fc-toolbar .fc-today-button {
+    margin-left: 0;
+}
+
+.fc-toolbar .fc-button-group {
+    float: right;
+}
+
+.fc-toolbar .fc-right button {
+    width: 33.333%;
+}
+
+
+
+/* -----------------------------------
 	Media Queries
 --------------------------------------------------------------------------------------------- */
 
@@ -952,6 +1001,13 @@ input#body-part {
         margin: 0;
     }
 
+    /*-- Calendar --*/
+
+    #calendar h2 {
+        color: #4A4A4A;
+        font-size: 2rem;
+    }
+
     /*-- Footer --*/
 
     footer .double-columns {
@@ -1022,6 +1078,31 @@ input#body-part {
 
     .smiley {
         font-size: 60px;
+    }
+
+    /* Calendar */
+
+    .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 1em;
+    }
+    
+    .fc-toolbar .fc-left,
+    .fc-toolbar .fc-right,
+    .fc-toolbar .fc-right .fc-button-group {
+        width: auto;
+        margin-bottom: 0;
+    }
+    
+    .fc-toolbar .fc-today-button {
+        margin-left: .75em;
+    }
+    
+    .fc-toolbar .fc-button-group {
+        float: left;
+    }
+    
+    .fc-toolbar .fc-right button {
+        width: auto;
     }
 }
 
