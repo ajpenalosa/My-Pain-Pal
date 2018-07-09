@@ -462,7 +462,7 @@ input#footer-email {
 }
 
 .modal h5 {
-    font-size: 2rem;
+    font-size: 1rem;
     color: #FFF;
     text-transform: uppercase;
 }
@@ -1042,6 +1042,12 @@ input#body-part {
         font-size: 14px;
         margin-top: 0;
     }
+    
+    /*-- Modals --*/
+
+    .modal h5 {
+        font-size: 1.5rem;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -1144,6 +1150,12 @@ input#body-part {
 
     .post-item .wrap-two::after {
         border: 0;
+    }
+    
+    /*-- Modals --*/
+
+    .modal h5 {
+        font-size: 2rem;
     }
 }
 
