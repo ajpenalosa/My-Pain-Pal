@@ -22,8 +22,16 @@ $(document).ready(function() {
             gender: gndr.val()
         };
 
-        if (newUser.first_name === "" || newUser.last_name === "" || newUser.email === "" || newUser.password === "" || newUser.dob === "" || newUser.gender === "") {
-            alert("Please complete all fields before submitting!");
+        if (!fName.val() || !lName.val() || !emAddr.val() || !pWord.val() || !bday.val() || !gndr.val()) {
+            registerHelp.html("Please fill out all fields before submitting!");
+
+            registerHelp.css(
+                {
+                    "visibility": "visible",
+                    "font-style": "italic",
+                    "font-weight": "bold"
+                }
+            );
         } else {
             $.post('/register', newUser, function (data) {
                 if (data.code === 304) {

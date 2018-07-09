@@ -26,7 +26,7 @@ $(document).ready(function () {
                     }
                 );
             } else if (data.code === 505) {
-                loginHelp.html("An account does not exist under that email address!");
+                loginHelp.html("An account does not exist under that email address! Please revise your credentials.");
 
                 loginHelp.css(
                     {
