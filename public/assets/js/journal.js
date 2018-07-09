@@ -171,10 +171,9 @@ $(document).ready(function () {
 
     }
 
-    $(document).on("click", "#edit", function (event) {
+    $(document).on("click", "#edit", handlePostEdit);
         console.log("clicked");
-    });
-
+  
     function handlePostEdit() {
         var currentPost = $(this)
             .parent()
@@ -183,19 +182,10 @@ $(document).ready(function () {
             .parent()
             .parent()
             .data("post");
-        window.location.href = "/"
+        window.location.href = "/add-new?post_id=" + currentPost.id;
     }
 
-    // id, where to edit and where to update to replace original (id of record & new info)
-
-    // $(document).on("click", "#delete", function (event) {
-    //     console.log("DELETE CLICK");
-    //     console.log(id);
-    // });
-
     $(document).on("click", "#delete", handlePostDelete);
-    // console.log("DELETE CLICK");
-    // console.log(userId.id)
 
     function deletePost(id) {
         $.ajax({
