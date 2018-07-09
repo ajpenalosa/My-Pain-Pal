@@ -37,6 +37,15 @@ $(document).ready(function() {
 
         break;
 
+        case "/body":
+
+        var bodyIframe = $(".body-iframe");
+        bodyIframe.height(windowHeight/2);
+
+        var mainContentHeight = windowHeight - staticHeights - pageTitleHeight;
+
+        break;
+
         case "/add-new":
 
         var bodyIframe = $(".body-iframe");
@@ -73,6 +82,15 @@ $(document).ready(function() {
             bodyIframe.height(windowHeight/2);
 
             var mainContentHeight = windowHeight - staticHeights - welcomeMessageHeight;
+    
+            break;
+
+            case "/body":
+    
+            var bodyIframe = $(".body-iframe");
+            bodyIframe.height(windowHeight/2);
+
+            var mainContentHeight = windowHeight - staticHeights - pageTitleHeight;
     
             break;
 
