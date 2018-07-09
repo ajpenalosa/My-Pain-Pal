@@ -106,6 +106,11 @@ $(document).ready(function () {
             $("#body-part").val(newBodyPart[1]);
             keepUserIn(userId);
 
+            // MODAL FIX ATTEMPT 
+            $("#body-modal").modal("hide");
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+
         });
 
         var mode = document.getElementById('male');
@@ -140,6 +145,11 @@ $(document).ready(function () {
             console.log("the one should  be  F split up again :", newBodyPart)
             $("#body-part").val(newBodyPart[1]);
             keepUserIn(userId);
+
+            // MODAL FIX ATTEMPT 
+            $("#body-modal").modal("hide");
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
 
         });
 
