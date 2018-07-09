@@ -5,7 +5,7 @@ $(document).ready(function(event) {
     logOut.on("click", () => {
         $.get('/logout', () => {
             console.log("You have been logged out!");
-            location.assign("*");
+            window.location.href = "/";
         });
     });
 });
