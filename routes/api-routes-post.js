@@ -164,8 +164,8 @@ module.exports = function (app) {
             where: {
                 id: req.body.id
             }
-        }).then(function (dbTodo) {
-            res.json(dbTodo);
+        }).then(function (dbPosts) {
+            res.json(dbPosts);
         });
     });
     
