@@ -13,6 +13,7 @@ $(document).ready(function () {
     var notes = $("#notes");
     var female_div = $("#female-div");
     var male_div = $("#male-div");
+    var postId;
 
     var url = window.location.search;
     var userId;
@@ -31,6 +32,17 @@ $(document).ready(function () {
     var postSlider = document.getElementById("post-pain-level-range");
     var postOutput = document.getElementById("post-pain-value");
     postOutput.innerHTML = postSlider.value;
+
+    console.log('whaaaat')
+    console.log(url.indexOf("?post_id="));
+
+    if (url.indexOf("?post_id=") !== -1) {
+        console.log("where here!!!");
+      postId = url.split("=")[1];
+      console.log('THIS IS THE POST ID')
+      console.log(postId);
+      getPostData(postId, "post");
+    }
 
     postSlider.oninput = function () {
         console.log("slider works");
@@ -76,9 +88,6 @@ $(document).ready(function () {
         postId = url.split("=")[1];
         getPostData(postId, "post");
     }
-    // else if (url.indexOf("?user_id=") !== -1) {
-    //     userId = url.split("=")[1];
-    // }
 
     $("#journal-post-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
@@ -183,7 +192,9 @@ $(document).ready(function () {
 
     function getPostData(id) {
         var queryUrl = "/api/journal/" + id;
+        console.log("BEFORE THAT SHIT")
         $.get(queryUrl, function (data) {
+        console.log("NOT DATA !!!!!!!")
             if (data) {
                 console.log("Hi HI hi ", data);
                 body_part.val(data.body_part);
@@ -199,33 +210,7 @@ $(document).ready(function () {
             }
         });
     }
-    
 
-    // function getPostData(id, type) {
-    //     var queryUrl;
-    //     switch(type) {
-    //         case "post":
-    //         queryUrl = "/api/journal/" + id;
-    //         break;
-    //         default:
-    //         return;
-    //     }
-    //     $.get(queryUrl, function(data) {
-    //         if(data) {
-    //         console.log("Hi HI hi ", data);
-    //         body_part.val(data.body_part);
-    //         journal_pain_intensity.val(data.pain_intensity);
-    //         pain_characteristics.val(data.pain_characteristics);
-    //         pain_duration.val(data.pain_duration);
-    //         medications.val(data.medications);
-    //         dosage.val(data.dosage);
-    //         notes.val(data.notes);
-    //         usersId = data.id;
-
-    //         updating = true;
-    //         }
-    //     });
-    // }
     function updatePost(Posts) {
         $.ajax({
             method: "PUT",

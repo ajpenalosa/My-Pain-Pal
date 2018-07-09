@@ -9,9 +9,14 @@ $(document).ready(function () {
     var dosage = $(".painDos");
     var notes = $(".painNotes");
     var userId;
+    var postId;
     var postJournal;
 
-
+    if (url.indexOf("?post_id=") !== -1) {
+        console.log("where here!!!");
+      postId = url.split("=")[1];
+      getPostData(postId, "post");
+    }
 
     $.get("/api/getid/", function (data) {
         userId = data.user;
@@ -172,7 +177,6 @@ $(document).ready(function () {
     }
 
     $(document).on("click", "#edit", handlePostEdit);
-        console.log("clicked");
   
     function handlePostEdit() {
         var currentPost = $(this)
