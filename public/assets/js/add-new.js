@@ -61,13 +61,13 @@ $(document).ready(function () {
             console.log("this one is the users posts console: ", usersPosts);
             
             // Triggers the modal
-            // $('#body-modal').modal();
+            $('#body-modal').modal();
 
-            // if (posts[0].gender === "Female") {
-            //     female_div.show();
-            // } else {
-            //     male_div.show();
-            // }
+            if (posts[0].gender === "Female") {
+                female_div.show();
+            } else {
+                male_div.show();
+            }
 
         });
     }
