@@ -13,12 +13,8 @@ $(document).ready(function () {
     var notes = $("#notes");
     var female_div = $("#female-div");
     var male_div = $("#male-div");
-
     var url = window.location.search;
     var userId;
-    var postId;
-    var updating = false;
-
     var humanFemale = new HumanAPI("embedded-human");
     var humanMale = new HumanAPI("embeddedHuman");
     var bodyPart;
@@ -26,7 +22,6 @@ $(document).ready(function () {
     var userMaleArr = [];
     female_div.hide();
     male_div.hide();
-
 
     var postSlider = document.getElementById("post-pain-level-range");
     var postOutput = document.getElementById("post-pain-value");
@@ -46,6 +41,7 @@ $(document).ready(function () {
     }
 
     keepUserIn();
+
     function getPosts(userId) {
         console.log("hello");
         var userIdString = userId || "";
@@ -59,7 +55,7 @@ $(document).ready(function () {
             console.log("what is this: ", posts[0].Posts)
             var usersPosts = posts[0].Posts;
             console.log("this one is the users posts console: ", usersPosts);
-            
+
             // Triggers the modal
             $('#body-modal').modal();
 
@@ -72,14 +68,6 @@ $(document).ready(function () {
         });
     }
 
-    if (url.indexOf("?post_id=") !== -1) {
-        postId = url.split("=")[1];
-        getPostData(postId, "post");
-    }
-    // else if (url.indexOf("?user_id=") !== -1) {
-    //     userId = url.split("=")[1];
-    // }
-
     $("#journal-post-submit").on("click", function handleFormSubmit(event) {
         console.log("clicked");
         event.preventDefault();
@@ -91,18 +79,9 @@ $(document).ready(function () {
             medications: medications.val().trim(),
             dosage: dosage.val().trim(),
             notes: notes.val().trim(),
-            id: userId.val()
-        };
-
-        if(updating) {
-            newPost.id = postId;
-            updatePost(newPost);
         }
-        else {
-            console.log(newPost);
-            submitPost(newPost); 
-        }
-       
+        console.log(newPost);
+        submitPost(newPost);
     });
 
     function maleSelect() {
@@ -178,62 +157,7 @@ $(document).ready(function () {
             window.location.href = "/dashboard";
             keepUserIn(userId);
         });
-         keepUserIn(userId);
-    }
-
-    function getPostData(id) {
-        var queryUrl = "/api/journal/" + id;
-        $.get(queryUrl, function (data) {
-            if (data) {
-                console.log("Hi HI hi ", data);
-                body_part.val(data.body_part);
-                journal_pain_intensity.val(data.pain_intensity);
-                pain_characteristics.val(data.pain_characteristics);
-                pain_duration.val(data.pain_duration);
-                medications.val(data.medications);
-                dosage.val(data.dosage);
-                notes.val(data.notes);
-                usersId = data.id;
-
-                updating = true;
-            }
-        });
-    }
-    
-
-    // function getPostData(id, type) {
-    //     var queryUrl;
-    //     switch(type) {
-    //         case "post":
-    //         queryUrl = "/api/journal/" + id;
-    //         break;
-    //         default:
-    //         return;
-    //     }
-    //     $.get(queryUrl, function(data) {
-    //         if(data) {
-    //         console.log("Hi HI hi ", data);
-    //         body_part.val(data.body_part);
-    //         journal_pain_intensity.val(data.pain_intensity);
-    //         pain_characteristics.val(data.pain_characteristics);
-    //         pain_duration.val(data.pain_duration);
-    //         medications.val(data.medications);
-    //         dosage.val(data.dosage);
-    //         notes.val(data.notes);
-    //         usersId = data.id;
-
-    //         updating = true;
-    //         }
-    //     });
-    // }
-    function updatePost(Posts) {
-        $.ajax({
-            method: "PUT",
-            url: "/api/journal",
-            data: Posts
-        }).then(function() {
-            window.location.href = "/journal";
-        });
+        keepUserIn(userId);
     }
 
 });
